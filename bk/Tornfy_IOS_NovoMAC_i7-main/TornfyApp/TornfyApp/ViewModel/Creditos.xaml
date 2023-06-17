@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Creditos" Title="Saldos e Créditos">
+    <ScrollView>
+        <Grid>
+            <StackLayout Orientation="Vertical" Margin="20,5,20,10"
+             VerticalOptions="Fill" x:Name="list_principal"
+             HorizontalOptions="StartAndExpand">
+
+                <!--<Label x:Name="txt_subtitle" Margin="0,10,0,5" FontSize="Medium" Text="Lista de Jogadores por categoria" TextColor="Black" HorizontalTextAlignment="Center"/>-->
+
+                <Label  Margin="0,5,0,15" FontSize="Small" Text="Créditos são gerados quando o jogador se inscreve em uma categoria, realiza o pagamento e depois vem a cancelar. Devoluções são de responsabilidade de cada organizador." 
+                        TextColor="Black" HorizontalTextAlignment="Center"/>
+       
+
+                <Label  Margin="0,5,0,15" FontSize="Small" FontAttributes="Bold,Italic" Text="Creditos de Etapas" 
+                        TextColor="Black" HorizontalTextAlignment="Center"/>
+
+               
+
+                <FlexLayout Direction="Column">
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray"/>
+                </FlexLayout>
+                <StackLayout x:Name="stk_semregistro">
+
+                    <Frame BackgroundColor="#fff4b3" HasShadow="False">
+                        <Label Text="Não há registros para este usuário nesta temporada."
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+                    </Frame>
+
+                </StackLayout>
+
+                <ScrollView>
+                    <ListView x:Name="etapas" HeightRequest="180"
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "True" 
+                     ItemTapped="etapas_ItemTapped"
+                      ItemSelected="etapas_ItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="10" BackgroundColor="{Binding color_inscricao}">
+
+                                        <Grid.ColumnDefinitions>
+
+                                            <ColumnDefinition Width="8*" />
+                                            <ColumnDefinition Width="1*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid VerticalOptions="Center" Padding="10,0,0,0" Grid.Column="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="8*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <Label   VerticalOptions="Center" 
+                                                 FontSize="16" FontAttributes="Bold" 
+                                                 Text="{Binding Nome_Etapa}" />
+
+                                            <Label Grid.Row="1" VerticalOptions="Center" 
+                                                 FontSize="14" 
+                                                 Text="{Binding responsavel, StringFormat='Responsável: {0}'}" />
+                                        </Grid>
+
+
+                                        <StackLayout VerticalOptions="Center" 
+                                                 Grid.Column="1" HorizontalOptions="EndAndExpand"  
+                                                 Orientation="Vertical">
+                                            <Label Grid.Row="1" VerticalOptions="Center" 
+                                                 FontSize="14" 
+                                                 Text="{Binding saldo, StringFormat='R${0}'}" />
+                                        </StackLayout>
+
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </ScrollView>
+                
+                
+
+               
+
+                <FlexLayout Direction="Column">
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray"/>
+                </FlexLayout>
+
+                <Label  Margin="0,5,10,15" FontSize="Small" FontAttributes="Bold,Italic" Text="Creditos de Locação" 
+                        TextColor="Black" HorizontalTextAlignment="Center"/>
+
+                <StackLayout x:Name="stk_semregistrolocacao">
+                    <Frame BackgroundColor="#fff4b3" HasShadow="False">
+                        <Label Text="Não há créditos de locação registros para este usuário."
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+                    </Frame>
+                </StackLayout>
+
+               
+
+                <ListView x:Name="listacreditolocacao"
+                  HasUnevenRows="True" HeightRequest="180"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "True" 
+                     ItemTapped="etapas_ItemTapped"
+                      ItemSelected="etapas_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10" BackgroundColor="{Binding color_inscricao}">
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="8*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid VerticalOptions="Center" Padding="10,0,0,0" Grid.Column="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="8*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <Label   VerticalOptions="Center" 
+                                                 FontSize="16" FontAttributes="Bold" 
+                                                 Text="{Binding nome_complexo}" />
+
+                                        <Label Grid.Row="1" VerticalOptions="Center" 
+                                                 FontSize="14" 
+                                                 Text="credito de locação" />
+                                    </Grid>
+
+
+                                    <StackLayout VerticalOptions="Center" 
+                                                 Grid.Column="1" HorizontalOptions="EndAndExpand"  
+                                                 Orientation="Vertical">
+                                        <Label Grid.Row="1" VerticalOptions="Center" 
+                                                 FontSize="14" 
+                                                 Text="{Binding credito, StringFormat='R${0}'}" />
+                                    </StackLayout>
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackLayout>
+
+           
+
+
+
+
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

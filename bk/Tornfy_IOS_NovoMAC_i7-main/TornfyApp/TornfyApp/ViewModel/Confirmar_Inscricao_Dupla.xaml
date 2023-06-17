@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Confirmar_Inscricao_Dupla"  Title="Confirmar Inscrição Dupla">
+
+    <ContentPage.Content>
+
+
+        <Grid Margin="0,0,0,0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="8*"/>
+
+            </Grid.RowDefinitions>
+
+
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0">
+                <Image Opacity="0.6" x:Name="image_cartaz" BackgroundColor="White"
+                       AbsoluteLayout.LayoutBounds="1,1,1,1"
+                       AbsoluteLayout.LayoutFlags="All"
+                       Aspect="AspectFill">
+
+                </Image>
+
+            </AbsoluteLayout>
+
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center"  Grid.Row="1">
+                <Frame CornerRadius="40" 
+                       HeightRequest="80"
+                       WidthRequest="80"
+                       HorizontalOptions="Center"
+                       Padding="0"
+                       IsClippedToBounds="True"
+                       Margin="0,-47,0,10"  >
+                    <Image x:Name="path_img"  />
+                </Frame>
+                <!--<Label HorizontalOptions="Center" FontSize="Subtitle" x:Name="txt_NomeClube" Margin="0,0,0,0" />
+                <Label  HorizontalOptions="Center" FontSize="Title" x:Name="txt_NomeEtapa" />-->
+
+                <Label  HorizontalOptions="Center" FontSize="Title" Text="Confirmar Inscrição" />
+
+                <Grid Margin="20,0,30,10"  Grid.Row="1">
+                    <Frame CornerRadius="20">
+
+                        <StackLayout Orientation="Vertical" Padding="10,10,10,10">
+
+
+                            <StackLayout Orientation="Horizontal" >
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" FontSize="Small" TextColor="Black" Text="CAPITÃO(a): " />
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" FontSize="Small"  x:Name="txt_nome_jogador" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" >
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" FontSize="Small" TextColor="Black" Text="PARCEIRO(a): " />
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" FontSize="Small"  x:Name="txt_nome_parceiro" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" >
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" FontSize="Small" TextColor="Black" Text="Torneio: " />
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" FontSize="Small"  x:Name="txt_nome_etapa" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" >
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" FontSize="Small" TextColor="Black" Text="Categoria: " />
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" FontSize="Small"  x:Name="txt_nome_categoria" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" >
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" FontSize="Small" TextColor="Black" Text="Clube Sede: " />
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" FontSize="Small"  x:Name="txt_NomeClube" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" >
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" FontSize="Small" TextColor="Black" Text="Camisa Tamanho: " />
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" FontSize="Small"  x:Name="txt_tamanho" />
+                                </StackLayout>
+                            </StackLayout>
+
+
+
+                        </StackLayout>
+
+
+                    </Frame>
+                </Grid>
+
+                <Button x:Name="btnConfirmar_Inscrição" 
+                        TextColor="White"
+                        Text="Confirmar Inscrição"
+                        HeightRequest="50"
+                        BackgroundColor="#3897f0"
+                        Margin="20,20,20,0"
+                        VerticalOptions="Start"
+                        Clicked="btnConfirmar_Inscrição_Clicked"/>
+
+                <Button x:Name="btnCancelar_Inscrição" 
+                        TextColor="Black"
+                        BorderWidth="1"
+                        BorderColor="Gray"
+                        Text="Cancelar Envio"
+                        HeightRequest="50"
+                        BackgroundColor="White"
+                        Margin="20"
+                        VerticalOptions="Start"
+                        Clicked="btnCancelar_Inscrição_Clicked"/>
+                <Label Text="Após inscrição, confira seu nome da aba de Jogadores" 
+                       HorizontalOptions="Center"  Margin="0,10,0,0" FontSize="12"/>
+
+
+            </StackLayout>
+
+
+
+
+        </Grid>
+
+
+
+
+    </ContentPage.Content>
+</ContentPage>

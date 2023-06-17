@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behavior="clr-namespace:TornfyApp"
+             x:Class="TornfyApp.ViewModel.Editar_DadosJogador" 
+             Title="Editar Cadastro" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0,4*" />
+        </Grid.RowDefinitions>
+
+        <Label Margin="30,30,0,0"  Text="Jogadores com clubes AVULSO, têm o direito de trocar de associação a qualquer momento da temporada!!!"/>
+
+        <StackLayout Grid.Row="1">
+
+            <Entry Margin="20,20,20,0" FontSize="Medium" Keyboard="Text" 
+                   ClearButtonVisibility="WhileEditing"
+                   Placeholder="Nome Jogaodor"
+                   x:Name="txt_nomeJogador"
+                   IsSpellCheckEnabled="False" IsReadOnly="True" ></Entry>
+
+            <Label Margin="30,0,30,20" FontSize="Small"  Text="OBS: a mudança de nome não é permitida por regulamento, porém se seu nome encontra-se incorreto avise a organização."/>
+
+            <Entry  Margin="20, 0, 20, 20" Keyboard="Telephone" 
+                   ClearButtonVisibility="WhileEditing" 
+                   FontSize="Medium" 
+                   Placeholder="Telefone (00) 0.0000-0000" 
+                   x:Name="txt_telfone" IsSpellCheckEnabled="False">
+                <Entry.Behaviors>
+                    <behavior:MaskedBehavior Mask="(XX) X.XXXX-XXXX" />
+                </Entry.Behaviors>
+            </Entry>
+
+            <Entry Margin="20, 0, 20, 20" Keyboard="Email"
+                   ClearButtonVisibility="WhileEditing" 
+                   FontSize="Medium" 
+                   Placeholder="Email Cadastro" 
+                   x:Name="txt_email" IsSpellCheckEnabled="False"></Entry>
+
+            <Entry Margin="20, 0, 20, 20" 
+                   ClearButtonVisibility="WhileEditing" 
+                   IsPassword="True" 
+                   FontSize="Medium" 
+                   Placeholder="Senha Acesso" 
+                   x:Name="txt_password" IsSpellCheckEnabled="False"
+                   ></Entry>
+
+        </StackLayout>
+       
+        <Button x:Name="btn_pgoPix" Grid.Row="3" Text="Editar Dados"   
+                   Background="#3c62aa"  Clicked="btnIncluirImagem_Clicked" FontSize="16" Margin="30,20,30,40"  
+                CornerRadius="8" TextColor="White" FontAttributes="Bold" />
+
+
+    </Grid>
+</ContentPage>

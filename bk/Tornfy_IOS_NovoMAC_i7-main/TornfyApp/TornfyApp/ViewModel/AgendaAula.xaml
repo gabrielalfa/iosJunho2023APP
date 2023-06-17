@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.AgendaAula" Title="Agendas de Aula">
+
+   
+    
+    <ScrollView>
+
+        <StackLayout>
+
+            <Label Text="Agenda Habilitadas" HorizontalTextAlignment="Center"  FontSize="16" Padding="30,20,30,0"/>
+            <Label Text="tornfy.com" HorizontalTextAlignment="Center"  FontSize="16" Padding="30,0,30,0"/>
+            <FlexLayout Direction="Column">
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray" Margin="30,0,30,0"/>
+            </FlexLayout>
+
+            <ListView x:Name="listagem_agendas" 
+                  HasUnevenRows="True"
+                       ItemTapped="listagem_agendas_ItemTapped"
+                  ItemSelected="listagem_agendas_ItemSelected"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" Margin="10"
+               IsPullToRefreshEnabled = "False" 
+                     >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnSpacing="10" Padding="30,10,30,10" >
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.2*" />
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="7*" />
+                                    <ColumnDefinition Width="3*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="60" />
+                                </Grid.RowDefinitions>
+
+
+                                <Image VerticalOptions="Center"  Source="{Binding path}" HeightRequest="40"  />
+                                <BoxView Grid.Column="1" CornerRadius="2" HeightRequest="70" WidthRequest="70" 
+                                     BackgroundColor="#3c62aa" Opacity="0.9"/>
+                                <Grid VerticalOptions="Center" Padding="10,0,0,0" Grid.Column="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label   VerticalOptions="Center" 
+                                                 FontSize="16" FontAttributes="Bold"  
+                                                 Text="{Binding nome_agenda}" />
+
+                                    <Label Grid.Row="1" VerticalOptions="Center" 
+                                                 FontSize="14" TextColor="{Binding color}"
+                                           
+                                                 Text="agenda de aulas" />
+                                </Grid>
+
+
+                                <StackLayout VerticalOptions="Center" 
+                                                 Grid.Column="3" HorizontalOptions="EndAndExpand"  
+                                                 Orientation="Vertical">
+                                    <Frame 
+                                          VerticalOptions="Center" 
+                                          HorizontalOptions="Center" 
+                                          Padding="5,10,5,10" 
+                                          CornerRadius="8" 
+                                            HasShadow="False"
+                                          BackgroundColor="#ffd900">
+
+
+                                        <Label FontFamily="calibri" 
+                                            FontSize="16"
+                                               Padding="6,0,6,0"
+                                            FontAttributes="Bold" 
+                                            Text="agendar" 
+                                            TextColor="#000" />
+                                    </Frame>
+
+
+
+
+                                </StackLayout>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Checkout_PagamentoLocacao">
+    <Grid Padding="40,40,40,60">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+
+            <RowDefinition Height="0.7*" />
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="0.7*" />
+        </Grid.RowDefinitions>
+
+        <!--<BoxView Color="Green" />-->
+
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label FontAttributes="Bold"  Text="OBS: PIX Copia e cola. Copie a linha digitável e pague no aplicativo de pagamento de sua preferência:"
+               HorizontalOptions="Center" FontSize="16"
+               VerticalOptions="Center" />
+            <Label Grid.Row="1" Text="Após o pagamento: Acesse a lista de inscritos para acompanhar o status de pagamento e status de inscrîção. Enviamos para o seu email todas as informações acima."
+               HorizontalOptions="Center" FontSize="16"
+               VerticalOptions="Center" />
+            <Label Grid.Row="2" Text="INSCRIÇÂO DO PARCEIRO: Para que seu PARCEIRO possa realizar o pagamento, ele deverá acessar >> login >> inscrições e pagamentos."
+               HorizontalOptions="Start"
+               VerticalOptions="Center" />
+            <!--<Label Grid.Row="3" Text="Seu parceiro será avisado por email sobre seu pagamento!!!"
+               HorizontalOptions="Center" FontSize="16"
+               VerticalOptions="Center" />-->
+
+            <Entry  x:Name="txtcodigo" IsReadOnly="True" Grid.Row="4" Placeholder="PIX Copia e cola" 
+                    HeightRequest="55" WidthRequest="115" PlaceholderColor="#1f2225"
+                    TextColor="#1f2225" ClearButtonVisibility="WhileEditing" >
+            </Entry>
+
+        </Grid>
+
+
+        <!--<BoxView Grid.Row="1"
+                 Color="Teal" />-->
+        <!--<Label Grid.Row="1"
+               Text="Row 1, Column 0"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />-->
+        <Image Margin="0,30,0,30" Grid.Row="2" HeightRequest="500" 
+               VerticalOptions="Start" x:Name="img_qrcode" />
+
+
+        <!--<BoxView Grid.Row="2"
+                 Color="Red" />
+        <Label Grid.Row="2"
+               Text="Row 2, Columns 0 and 1"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />-->
+        <Button Grid.Row="1" Text="COPIAR CÓDIGO"  HeightRequest="55" WidthRequest="145"
+                   Background="#3c62aa" Clicked="Button_Clicked" FontSize="18" Margin="10,0,10,0"  
+                CornerRadius="8" TextColor="White" FontAttributes="Bold" />
+
+        <!--<BoxView Grid.Row="3"
+                 Color="Yellow" />
+        <Label Grid.Row="3"
+               Text="Row 2, Columns 0 and 1"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />-->
+        <Button Grid.Row="3" Text="Conferir Pagamento"  HeightRequest="55" WidthRequest="145"
+                   Background="#ffd900" Clicked="Button_Clicked_1" FontSize="18" Margin="10,0,10,0"  
+                CornerRadius="8" TextColor="Black" FontAttributes="Bold" />
+
+
+    </Grid>
+</ContentPage>

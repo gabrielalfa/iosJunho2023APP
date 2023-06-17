@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Tipo_Ranking" Title="Tipo de Ranking">
+    
+    <ScrollView>
+
+        <StackLayout>
+
+            <!--<Image Source="ball_tennis_beach" WidthRequest="40" Margin="0,30,0,0" />-->
+            <Label x:Name="titulo" HorizontalTextAlignment="Center"  FontSize="32" Padding="20,30,20,0"/>
+            <Label  x:Name="sub_titulo" HorizontalTextAlignment="Center"  FontSize="16" Padding="30,0,30,30"/>
+            <!--<Label  HorizontalTextAlignment="Center" Text="Plaforma de Torneios e Eventos Esportivos! Escolha o seu circuito e começe a jogar agora!" FontSize="16" Padding="30,0,30,0"/>-->
+            <FlexLayout Direction="Column">
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray" Margin="30,0,30,0"/>
+            </FlexLayout>
+
+            <ListView x:Name="listagem_torneios" 
+                  HasUnevenRows="True"
+                       ItemTapped="listagem_torneios_ItemTapped"
+                  ItemSelected="listagem_torneios_ItemSelected"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="30,0,30,0" BackgroundColor="{Binding color_inscricao}" >
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.2*" />
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="60" />
+                                </Grid.RowDefinitions>
+
+
+                                <Image VerticalOptions="Center"  Source="{Binding img_path}" HeightRequest="30"  />
+
+                                <Grid VerticalOptions="Center" Padding="10,0,0,0" Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label   VerticalOptions="Center" 
+                                                 FontSize="16" FontAttributes="Bold"  TextColor="{Binding color_font}"
+                                                 Text="{Binding Nome_Ranking}" />
+
+                                </Grid>
+
+
+                                <StackLayout VerticalOptions="Center" 
+                                                 Grid.Column="2" HorizontalOptions="EndAndExpand"  
+                                                 Orientation="Vertical">
+                                    <Label   VerticalOptions="Center" 
+                                                 FontSize="16" FontAttributes="Bold"  TextColor="{Binding color_font}"
+                                                 Text="..." />
+                                </StackLayout>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>

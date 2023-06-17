@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Pontuacao_Ranking">
+    
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"
+                     Text="Icon Item"
+                     Priority="0" 
+                     IconImageSource="tornfylogo_ios.png"/>
+                    
+        <ToolbarItem Order="Primary"
+                     Text="Filtro"
+                     Priority="1"
+                     Clicked="ToolbarItem_Clicked_1" />
+        
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+        <Grid Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout>
+                <StackLayout Grid.Row="1">
+                    <StackLayout Padding="0,10,0,0" WidthRequest="300" HorizontalOptions="Center">
+                        <!--<Image x:Name="bola_rk" Source="ball_tennis_blue" WidthRequest="50" Margin="0,0,0,0" />-->
+                        <Label Text ="Ranking e Pontuação" FontSize="22" HorizontalTextAlignment="Center" TextColor="Black" />
+                        <Label x:Name="txt_subtitulo" Text ="Clique no jogo para ver estatísticas" FontSize="0" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+
+                    <Picker 
+                            SelectedIndexChanged="pcCategorias_SelectedIndexChanged_1"
+                            x:Name="pcCategorias" Grid.Row="3" 
+                            HorizontalOptions="FillAndExpand" 
+                            HeightRequest="50" BackgroundColor="#F3F3F3"
+                            HorizontalTextAlignment="Center" 
+                        ItemDisplayBinding="{Binding Categoria_Nome}" Title="Escolha uma categoria" >
+                    </Picker>
+
+                    <ListView x:Name="lista_jogos" 
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" 
+                      ItemTapped="lista_jogos_ItemTapped"
+                                 ItemSelected="lista_jogos_ItemSelected" >
+
+                        <ListView.ItemTemplate>
+
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="0,0,20,0" BackgroundColor="{Binding color_back}"  >
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+
+                                        <StackLayout VerticalOptions="Center" 
+                                                 Grid.Column="1" HorizontalOptions="Start"  
+                                                 Orientation="Vertical">
+                                            <Label   VerticalOptions="Center" 
+                                                 FontSize="16" FontAttributes="Bold"  TextColor="{Binding color_font}"
+                                                 Text="{Binding contagem, StringFormat='({0})'}" />
+                                        </StackLayout>
+
+                                        <Grid VerticalOptions="Center" Padding="10,0,0,0" Grid.Column="2">
+                                            <!--<Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="8*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>-->
+
+                                            <Label   VerticalOptions="Center" 
+                                                 FontSize="16"   TextColor="{Binding color_font}"
+                                                 Text="{Binding Nome_Jogador}" />
+
+                                        </Grid>
+
+
+                                        <StackLayout VerticalOptions="Center" 
+                                                 Grid.Column="3" HorizontalOptions="Center"  
+                                                 Orientation="Vertical">
+                                            <Label   VerticalOptions="Center" 
+                                                 FontSize="16" TextColor="{Binding color_font}"
+                                                 Text="{Binding Nome_Clube, StringFormat='{0}'}" />
+                                        </StackLayout>
+
+                                        <StackLayout VerticalOptions="Center" 
+                                                 Grid.Column="4" HorizontalOptions="EndAndExpand"  
+                                                 Orientation="Vertical">
+                                            <Label   VerticalOptions="Center" 
+                                                 FontSize="16" FontAttributes="Bold"  TextColor="{Binding color_font}"
+                                                 Text="{Binding Soma_Jogador, StringFormat='{0}'}" />
+                                        </StackLayout>
+
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </StackLayout>
+
+
+
+            </StackLayout>
+
+
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

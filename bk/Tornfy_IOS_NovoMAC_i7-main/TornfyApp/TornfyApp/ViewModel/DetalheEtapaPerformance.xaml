@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.DetalheEtapaPerformance">
+    <StackLayout>
+
+        <Label x:Name="nome_etapa" Margin="0,30,0,5" FontSize="22" Text="Aproveitamento por Etapa" TextColor="Black" HorizontalTextAlignment="Center"/>
+        <Label Text="Perfornmance Detalhada de Evento"  HorizontalOptions="Center" HorizontalTextAlignment="Center"  Margin="40,0,40,10" FontSize="18"/>
+
+        <ListView x:Name="listagem_clubes"
+                  ItemTapped="listagem_clubes_ItemTapped" 
+             ItemSelected="listagem_clubes_ItemSelected"
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" >
+
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <ViewCell>
+                        <Grid ColumnSpacing="0" Padding="30,10,40,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label VerticalOptions="Center" FontAttributes="Italic"  FontSize="Medium"  Text="{Binding texto_botao}" />
+                            <StackLayout  Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,0,5" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" FontAttributes="Bold"  FontSize="Medium"  Text="{Binding item}" />
+                            </StackLayout>
+
+                        </Grid>
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!--</Frame>-->
+    </StackLayout>
+</ContentPage>

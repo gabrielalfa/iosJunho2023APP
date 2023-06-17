@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Meu_Historico" >
+    <ContentPage.Content>
+
+
+
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+           
+               <StackLayout Grid.Row="0">
+                   
+                   
+                    <Picker 
+                            SelectedIndexChanged="pcCategoria_SelectedIndexChanged"
+                            x:Name="pcAnos" Grid.Row="3" 
+                            HorizontalOptions="FillAndExpand" 
+                            HeightRequest="50" 
+                            HorizontalTextAlignment="Center" >
+                    </Picker>
+                     <FlexLayout Direction="Column">
+                        <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" />
+                    </FlexLayout>
+
+                    <StackLayout x:Name="no_data">
+                        <Label Text="Não houve registros!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+
+                    <ListView x:Name="lista_jogos"
+                             HasUnevenRows="True"
+                             SeparatorVisibility="None"
+                             BackgroundColor="Transparent"
+                             IsPullToRefreshEnabled="False"
+                             ItemTapped="lista_jogos_ItemTapped"
+                             ItemSelected="lista_jogos_ItemSelected"
+                             IsGroupingEnabled="True" Grid.Row="1">
+                        <ListView.GroupHeaderTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid BackgroundColor="#F0F0F0">
+                                        <Label Text="{Binding Key}"
+                           FontAttributes="Bold, Italic" TextTransform="Uppercase"
+                           FontSize="18"
+                           VerticalOptions="Center"
+                           Margin="10,5,10,5" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.GroupHeaderTemplate>
+
+
+                        <ListView.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <ViewCell>
+                                    <Frame Padding="10" HasShadow="True"  CornerRadius="5" Margin="6">
+                                        <Grid ColumnSpacing="0" RowSpacing="6">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="70*" />
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="9*" />
+                                                <ColumnDefinition Width="9*" />
+                                                <ColumnDefinition Width="9*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="1" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <Label Grid.Row="0" Grid.Column="0" FontSize="14" Grid.ColumnSpan="3" Text="{Binding Nome_etapa}"
+                                                   VerticalTextAlignment="Center" FontAttributes="Bold" />
+                                            <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" Text="fase" VerticalTextAlignment="Center"
+                                                   FontSize="12" FontAttributes="Italic" HorizontalOptions="End"/>
+
+                                            <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" BackgroundColor="Gray" />
+
+                                            <Label Grid.Row="2" Grid.Column="0" Text="{Binding Nome_1}" VerticalTextAlignment="Center" FontAttributes="{Binding bold_jog_1}" />
+                                            <BoxView CornerRadius="2" Grid.Row="2" Grid.Column="1" BackgroundColor="{Binding color_1}" Opacity="0.9" />
+                                            <Label Grid.Row="2" Grid.Column="2" Text="{Binding set1_j1}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="{Binding bs_1_j1}"/>
+                                            <Label Grid.Row="2" Grid.Column="3" Text="{Binding set2_j1}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="{Binding bs_2_j1}"/>
+                                            <Label Grid.Row="2" Grid.Column="4" Text="{Binding set3_j1}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="{Binding bs_3_j1}"/>
+
+                                            <Label Grid.Row="3" Grid.Column="0" Text="{Binding Nome_2}" VerticalTextAlignment="Center" FontAttributes="{Binding bold_jog_2}"/>
+                                            <BoxView CornerRadius="2" Grid.Row="3" Grid.Column="1" BackgroundColor="{Binding color_2}" Opacity="0.9" />
+                                            <Label Grid.Row="3" Grid.Column="2" Text="{Binding set1_j2}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="{Binding bs_1_j2}"/>
+                                            <Label Grid.Row="3" Grid.Column="3" Text="{Binding set2_j2}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="{Binding bs_1_j2}"/>
+                                            <Label Grid.Row="3" Grid.Column="4" Text="{Binding set3_j2}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="{Binding bs_1_j2}"/>
+                                        </Grid>
+                                    </Frame>
+                                </ViewCell>
+
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+               
+
+            
+
+
+
+        </Grid>
+
+
+    </ContentPage.Content>
+</ContentPage>

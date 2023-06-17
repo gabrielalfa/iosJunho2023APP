@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Dados_Jogador" Title="Dados Jogador">
+    
+
+     <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"
+                     Text="Icon Item"
+                     Priority="0" 
+                     IconImageSource="tornfylogo_ios.png"/>
+                    
+        <ToolbarItem Order="Primary"
+                     Text="Editar"
+                     Priority="1"
+                     Clicked="btnEditarDados" />
+        
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+
+        <StackLayout>
+            <Frame Grid.Row="0" HasShadow="True" Background="#efeff0">
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Source="tornfylogo" Grid.Row="0" Grid.ColumnSpan="3"
+                               HeightRequest="160" 
+                               WidthRequest="160"
+                               Margin="10,-10,0,0" />
+
+                        <Frame CornerRadius="30" Grid.Column="1" Grid.Row="1"
+                               HeightRequest="60" 
+                               WidthRequest="60"
+                               HorizontalOptions="Center"
+                               Padding="0" HasShadow="False"
+                               IsClippedToBounds="True">
+                            <Image x:Name="image_jogador" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   Aspect="AspectFill">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Tapped="TapGestureRecognizer_Tapped_1"
+                                        NumberOfTapsRequired="1" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Frame>
+
+                        <StackLayout VerticalOptions="CenterAndExpand" 
+                                     Grid.Row="1" Margin="10,10,0,0"
+                                     Grid.Column="2" Grid.ColumnSpan="2" Orientation="Vertical">
+                            <Label HorizontalTextAlignment="Start"
+                                   VerticalTextAlignment="Center"
+                                   TextColor="#1f2225" x:Name="txt_nome">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Label HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                   TextColor="#1f2225" x:Name="txt_email">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <Frame Padding="10" Margin="30,20,30,10" HasShadow="False"
+                   CornerRadius="8" HeightRequest="30" x:Name="aviso_atualizacao">
+                <Label HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                       x:Name="aviso_texto">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="TapGestureRecognizer_Tapped"
+                            NumberOfTapsRequired="1" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Frame>
+
+            <ListView x:Name="dados_jogador"  
+              VerticalOptions="FillAndExpand" 
+              RowHeight="45" Grid.Row="1"
+              HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+              IsPullToRefreshEnabled = "False" 
+              ItemTapped="dados_jogador_ItemTapped"
+                   ItemSelected="dados_jogador_ItemSelected"
+              >
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10" >
+                                <StackLayout Orientation="Horizontal" Padding="20,0,0,0">
+
+                                    <StackLayout VerticalOptions="Center" Orientation="Vertical">
+                                        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                            <Label VerticalOptions="Center" FontAttributes="{Binding atribute}"
+                                                    FontSize="Medium"  TextColor="{Binding color}"
+                                                    Text="{Binding label}"  />
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

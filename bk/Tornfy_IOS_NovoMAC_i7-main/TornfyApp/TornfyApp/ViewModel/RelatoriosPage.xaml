@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.RelatoriosPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <ListView x:Name="listagem_pdf" 
+                  ItemTapped="listagem_pdf_ItemTapped" Margin="0,20,0,0"
+             ItemSelected="listagem_pdf_ItemSelected"
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" >
+
+                    <ListView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <ViewCell>
+
+                                <Grid Padding="10">
+
+                                    <StackLayout Orientation="Horizontal">
+                                       
+                                        <StackLayout VerticalOptions="Center" Orientation="Vertical">
+
+                                            <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                                <Label VerticalOptions="Center"  
+                                                   FontSize="18"
+                                                   Margin="10,0,0,0"
+                                                   Text="{Binding item}" />
+                                            </StackLayout>
+
+                                            <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                                <Label VerticalOptions="Center"  FontAttributes="Italic,Bold" 
+                                                   FontSize="14"
+                                                   Margin="10,0,0,0"
+                                                   Text="{Binding local}" />
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+                                        <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand" 
+                                                 Orientation="Horizontal">
+                                            <Image VerticalOptions="Center"
+                                               Margin="10,10,15,10" HeightRequest="30"
+                                           WidthRequest="30"  Aspect="AspectFill" Source="pdf_tab"  />
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                </Grid>
+
+
+
+
+
+
+                            </ViewCell>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+                <ListView x:Name="lista_categorias" 
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "false"
+                      ItemTapped="lista_categorias_ItemTapped"
+                      ItemSelected="lista_categorias_ItemSelected"
+                      IsGroupingEnabled="True" GroupDisplayBinding="{Binding Key}"   >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10" BackgroundColor="{Binding color_inscricao}">
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Margin="10,0,10,0" VerticalOptions="Center" Orientation="Horizontal">
+
+                                            <StackLayout  VerticalOptions="Center" Orientation="Horizontal">
+                                                <Image HeightRequest="20"
+                                           WidthRequest="20"  Aspect="AspectFill" Source="{Binding img_ball}"  />
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                            <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                                <Label VerticalOptions="Center"  
+                                                   FontSize="18"
+                                                   Margin="10,0,0,10"
+                                                   Text="{Binding Categoria_Nome}" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand" 
+                                                 Orientation="Horizontal">
+                                            <Image VerticalOptions="Center"
+                                               Margin="10,10,15,10" HeightRequest="20"
+                                           WidthRequest="20"  Aspect="AspectFill" Source="pdf_tab"  />
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                </Grid>
+                            </ViewCell>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <StackLayout x:Name="stk_semregistro" Margin="40">
+                   
+                    <Frame BackgroundColor="#E7305E" HasShadow="False" CornerRadius="8">
+
+                        <StackLayout Orientation="Horizontal">
+
+                            <Image Source="info" HeightRequest="50" />
+
+                             <Label TextColor="White" Text="Publicação ainda não foi divulgada ou foi retirada para manutenção."
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                        </StackLayout>
+
+
+                       
+                    </Frame>
+
+                </StackLayout>
+
+
+
+            </StackLayout>
+
+        </ScrollView>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Pontuacao_Clubes">
+    <ContentPage.Content>
+
+        <Grid Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout>
+                <StackLayout Grid.Row="1">
+                    <StackLayout Padding="0,10,0,0" WidthRequest="300" HorizontalOptions="Center">
+                        <Label Text ="Ranking e Pontuação" FontSize="22" HorizontalTextAlignment="Center" TextColor="Black" />
+                        <Label x:Name="txt_subtitulo" Text ="Clique no jogo para ver estatísticas" FontSize="0" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+
+                    <FlexLayout Grid.Row="2"  Direction="Column">
+                        <BoxView HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="4" HeightRequest="1" Color="Gray"/>
+                    </FlexLayout>
+
+                    <ListView x:Name="lista_jogos" 
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" 
+                      ItemTapped="lista_jogos_ItemTapped"
+                                 ItemSelected="lista_jogos_ItemSelected" >
+
+                        <ListView.ItemTemplate>
+
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="0,0,20,0" BackgroundColor="{Binding color_back}"  >
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+
+                                        <StackLayout VerticalOptions="Center" 
+                                                 Grid.Column="1" HorizontalOptions="Start"  
+                                                 Orientation="Vertical">
+                                            <Label   VerticalOptions="Center" 
+                                                 FontSize="16" FontAttributes="Bold"  TextColor="{Binding color_font}"
+                                                 Text="{Binding contagem, StringFormat='({0})'}" />
+                                        </StackLayout>
+
+                                        <Grid VerticalOptions="Center" Padding="10,0,0,0" Grid.Column="2">
+                                            <!--<Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="8*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>-->
+
+                                            <!--<Label   VerticalOptions="Center" 
+                                                 FontSize="16"   TextColor="{Binding color_font}"
+                                                 Text="{Binding String_Clube}" />-->
+                                            <Image HorizontalOptions="Start" HeightRequest="30" Source="{Binding path_clube}"/>
+
+
+                                        </Grid>
+
+
+                                        <StackLayout VerticalOptions="Center"  Grid.Column="3" >
+                                            <Label   VerticalOptions="Center" HorizontalOptions="Start"
+                                                 FontSize="16" TextColor="{Binding color_font}"
+                                                 Text="{Binding String_Clube, StringFormat='{0}'}" />
+                                        </StackLayout>
+
+                                        <StackLayout VerticalOptions="Center" 
+                                                 Grid.Column="4" HorizontalOptions="EndAndExpand"  
+                                                 Orientation="Vertical">
+                                            <Label   VerticalOptions="Center" 
+                                                 FontSize="16" FontAttributes="Bold"  TextColor="{Binding color_font}"
+                                                 Text="{Binding sumd, StringFormat='{0}'}" />
+                                        </StackLayout>
+
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </StackLayout>
+
+
+
+            </StackLayout>
+
+
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

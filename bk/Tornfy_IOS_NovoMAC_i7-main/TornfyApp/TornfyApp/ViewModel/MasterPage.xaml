@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.MasterPage"
+             NavigationPage.HasNavigationBar="False">
+
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu" x:Name="content_menu" BackgroundColor="#F0F0F0"> 
+            <StackLayout Orientation="Vertical">
+                <Grid HorizontalOptions="FillAndExpand">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="10"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+
+    <Grid.RowDefinitions>
+        <RowDefinition Height="80" />
+        <RowDefinition Height="60"/>
+    </Grid.RowDefinitions>
+
+    <Image Source="tornfylogo" Grid.Row="0" Grid.ColumnSpan="3"
+           HeightRequest="80" WidthRequest="80" Margin="30,50,0,0" />
+
+    <Frame CornerRadius="30" Grid.Column="1" Grid.Row="1"
+           HeightRequest="60" 
+           WidthRequest="60"
+           HorizontalOptions="Center"
+           Padding="0" HasShadow="False"
+           IsClippedToBounds="True">
+        <Image x:Name="img_jogador"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Aspect="AspectFill">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped="TapGestureRecognizer_Tapped_1"
+                    NumberOfTapsRequired="1" />
+            </Image.GestureRecognizers>
+        </Image>
+    </Frame>
+
+    <StackLayout VerticalOptions="CenterAndExpand" Grid.Row="1" Margin="10,0,0,0"
+                 Grid.Column="2" Grid.ColumnSpan="2" Orientation="Vertical">
+        <Label HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Center" FontSize="18"
+               TextColor="#1f2225" x:Name="nome_jogador">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped="TapGestureRecognizer_Tapped"
+                    NumberOfTapsRequired="1" />
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Label HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+               TextColor="#1f2225" x:Name="email_jogador" FontSize="13">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped="TapGestureRecognizer_Tapped"
+                    NumberOfTapsRequired="1" />
+            </Label.GestureRecognizers>
+        </Label>
+    </StackLayout>
+</Grid>
+
+
+                <ListView x:Name="navigationDrawerList" RowHeight="55" Margin="0,10,0,10"
+                  SeparatorVisibility="Default" BackgroundColor="White" 
+                  ItemSelected="navigationDrawerList_ItemSelected"
+                          ItemTapped="navigationDrawerList_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                   Orientation="Horizontal"
+                                   Padding="20,0,0,0" Spacing="20">
+
+                                    <Image Source="{Binding Icon}"
+                                     HeightRequest="28" 
+                                     VerticalOptions="Center" />
+
+                                    <Label Text="{Binding Title}"
+                                       FontSize="Small"
+                                      
+                                           VerticalTextAlignment="Center"
+                                       TextColor="Black"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <ContentPage />
+    </MasterDetailPage.Detail>
+
+
+
+</MasterDetailPage>

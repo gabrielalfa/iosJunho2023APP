@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Etapas_Pontuadas" 
+             Title="Etapas Pontuadas">
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical"  Margin="20,15,20,10"
+             VerticalOptions="Fill"
+             HorizontalOptions="StartAndExpand">
+
+            <StackLayout Orientation="Vertical" Margin="0,0,0,10" Spacing="6" HorizontalOptions="CenterAndExpand">
+                <Label x:Name="txt_top" Text="James Smith" FontSize="20" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
+                <Label x:Name="txt_nome" Text="(Senior Software Engineer)" FontSize="12" TextColor="#2C3E50" HorizontalOptions="CenterAndExpand"/>
+
+            </StackLayout>
+
+            <FlexLayout Direction="Column">
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray"/>
+            </FlexLayout>
+
+            <Picker 
+                            SelectedIndexChanged="pcAnos_SelectedIndexChanged"
+                            x:Name="pcAnos" Grid.Row="3" 
+                            HorizontalOptions="FillAndExpand" 
+                            HeightRequest="50" 
+                            HorizontalTextAlignment="Center" >
+            </Picker>
+
+            <ListView x:Name="etapas_rankeadas" 
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+                          
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" 
+                     ItemTapped="etapas_rankeadas_ItemTapped"
+                      ItemSelected="etapas_rankeadas_ItemSelected">
+
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <ViewCell>
+                            <Grid Padding="0,18,0,18" BackgroundColor="{Binding color_inscricao}">
+
+                                <StackLayout>
+                                    <StackLayout Orientation="Vertical">
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout HorizontalOptions="Start"  Orientation="Horizontal">
+                                                    <BoxView CornerRadius="4" Grid.RowSpan="4" WidthRequest="7"
+                                                        BackgroundColor="#3c474d" Opacity="0.5"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                            <StackLayout VerticalOptions="Center" Orientation="Vertical">
+                                                <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                                    <Label VerticalOptions="Center" HorizontalTextAlignment="Start"  
+                                               FontSize="16"    TextColor="Gray"   Text="{Binding Nome_Categoria}" />
+                                                    <Image Source="{Binding img_path}" HeightRequest="15"/>
+                                                </StackLayout>
+
+                                                <StackLayout HorizontalOptions="Start"  Orientation="Horizontal">
+                                                    <Label VerticalOptions="Center"   FontSize="Small" TextColor="Gray"  Text="Tipo Etapa:" />
+
+                                                    <Label VerticalOptions="Center" HorizontalTextAlignment="Start"  
+                                            FontSize="14" TextColor="Gray" FontAttributes="Bold"   
+                                                   Text="{Binding tipo_cat}" />
+
+                                                </StackLayout>
+
+                                                <StackLayout HorizontalOptions="Start"  Orientation="Horizontal">
+                                                    <Label VerticalOptions="Center"   FontSize="Small" TextColor="Gray"  Text="Esquema Pontos:" />
+
+                                                    <Label VerticalOptions="Center" HorizontalTextAlignment="Start"  
+                                            FontSize="14" TextColor="Gray" FontAttributes="Bold"   
+                                                   Text="{Binding Nome_Grupo}" />
+
+                                                </StackLayout>
+
+
+
+                                            </StackLayout>
+
+                                            <StackLayout HorizontalOptions="EndAndExpand"  Orientation="Horizontal">
+                                                <Label VerticalOptions="Center"   FontSize="Small" TextColor="Gray"  Text="PT:" />
+
+
+                                                <Label VerticalOptions="Center" HorizontalTextAlignment="End"  
+                                            FontSize="14" TextColor="Gray" FontAttributes="Bold"   
+                                                   Text="{Binding pt}" />
+
+                                            </StackLayout>
+
+                                        </StackLayout >
+
+                                    </StackLayout>
+                                </StackLayout>
+
+
+                            </Grid>
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

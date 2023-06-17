@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Estatisticas" >
+    
+    
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Picker 
+                SelectedIndexChanged="pcAnos_SelectedIndexChanged"
+                x:Name="pcAnos" Grid.Row="0" Margin="20,20,20,10" 
+                HorizontalOptions="FillAndExpand" 
+                HeightRequest="20" 
+                HorizontalTextAlignment="Center" >
+        </Picker>
+
+
+        <StackLayout x:Name="stk_stats" Grid.Row="1">
+
+
+            
+
+            <ScrollView Padding="0,0,0,40">
+
+
+                <Grid Margin="0,0,0,40" Padding="0,0,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="160"/>
+                        <RowDefinition Height="180"/>
+                        <RowDefinition Height="180"/>
+                        <RowDefinition Height="180"/>
+                        <RowDefinition Height="180"/>
+                        <RowDefinition Height="550"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                   
+
+                   <!--<Frame Margin="30,0,30,0" Grid.Row="0" HasShadow="False" 
+       HeightRequest="100" VerticalOptions="Start">
+    <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+        <Grid HorizontalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+            </Grid.RowDefinitions>
+
+            <Frame CornerRadius="40" Grid.Row="0"
+                   HeightRequest="80" 
+                   WidthRequest="80"
+                   HasShadow="False"
+                   HorizontalOptions="Center"
+                   Padding="0"
+                   IsClippedToBounds="True">
+                <Image x:Name="image_jogador" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center"
+                       Aspect="AspectFill">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
+
+            <Label HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   TextColor="#1f2225" x:Name="txt_nome"
+                   Grid.Row="1" />
+
+            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   TextColor="#1f2225" x:Name="txt_n_jogos"
+                   Grid.Row="2" />
+        </Grid>
+    </StackLayout>
+</Frame>-->
+
+
+
+                     <Frame Margin="30,0,30,0" BackgroundColor="#35383b" CornerRadius="8" Grid.Row="1" >
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+
+                          
+
+
+                            <Label VerticalTextAlignment="Center" x:Name="txt_tpg"  TextColor="#fff"
+                                   FontSize="32" FontAttributes="Bold" Grid.Row="0"/>
+                            <ProgressBar Progress="0.8" Grid.Row="1" ProgressColor="#ff9700"/>
+                            <Label Text="Rating Tornfy" TextTransform="Uppercase" TextColor="#fff" FontSize="18" FontAttributes="Bold" Grid.Row="2" />
+                            <Label Text="Sistema de Controle de Performance"  TextColor="#fff" FontSize="14" Grid.Row="3" />
+                            
+                            <!--<Image Source="trofeu_branco" VerticalOptions="Start" HeightRequest="30" Grid.RowSpan="2" Grid.Column="1"/>-->
+
+                        </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
+                    <Frame Margin="30,0,30,0" BackgroundColor="#fff" CornerRadius="8" Grid.Row="2" >
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Soma Games Ganhos" FontSize="14" FontAttributes="Bold"/>
+                            <Label VerticalTextAlignment="Center" x:Name="somagames_ganhos" FontSize="32" FontAttributes="Bold" Grid.Row="1"/>
+                            <ProgressBar Progress="0.5" x:Name="prg_somagames_ganhos" Grid.Row="2" ProgressColor="#ff9700"/>
+                            <Label x:Name="lbl_somagames_ganhos" Text="Performance em Games (77%)" FontSize="14" FontAttributes="Bold" Grid.Row="3" />
+
+                            <Image Source="stats" VerticalOptions="Start" HeightRequest="30" Grid.RowSpan="4" Grid.Column="1"/>
+
+                        </Grid>
+                    </Frame>
+
+                    <Frame Margin="30,0,30,0" BackgroundColor="#fff" CornerRadius="8" Grid.Row="3" >
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Sets Vencidos" FontSize="14" FontAttributes="Bold"/>
+                            <Label VerticalTextAlignment="Center" x:Name="somaset_ganhos" FontSize="32" FontAttributes="Bold" Grid.Row="1"/>
+                            <ProgressBar Progress="0.5" x:Name="prg_somasets_ganhos" Grid.Row="2" ProgressColor="#1bbcea"/>
+                            <Label x:Name="lbl_somasets_ganhos" Text="Performance em Games (77%)" FontSize="14" FontAttributes="Bold" Grid.Row="3" />
+
+                            <Image Source="stats" VerticalOptions="Start" HeightRequest="30" Grid.RowSpan="4" Grid.Column="1"/>
+
+                        </Grid>
+                    </Frame>
+
+                    <Frame Margin="30,0,30,0" BackgroundColor="#fff" CornerRadius="8" Grid.Row="4" >
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Vitórias Totais" FontSize="14" FontAttributes="Bold"/>
+                            <Label VerticalTextAlignment="Center" x:Name="soma_vitorias" FontSize="32" FontAttributes="Bold" Grid.Row="1"/>
+                            <ProgressBar Progress="0.5" x:Name="prg_vitorias"  Grid.Row="2" ProgressColor="#0f9e3e"/>
+                            <Label x:Name="lbl_vitorias" Text="Performance em Games (77%)" FontSize="14" FontAttributes="Bold" Grid.Row="3" />
+
+                            <Image Source="stats" VerticalOptions="Start" HeightRequest="30" Grid.RowSpan="4" Grid.Column="1"/>
+
+                        </Grid>
+                    </Frame>
+
+                    <Frame Margin="30,0,30,0" BackgroundColor="#fff" CornerRadius="8" Grid.Row="5" >
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Games Vencidos" FontSize="14" FontAttributes="Bold"/>
+                            <Label VerticalTextAlignment="Center" x:Name="soma_derrotas" FontSize="32" FontAttributes="Bold" Grid.Row="1"/>
+                            <ProgressBar Progress="0.5" x:Name="prg_derrotas" Grid.Row="2" ProgressColor="#ff107e"/>
+                            <Label x:Name="lbl_derrotas" Text="Performance em Games (77%)" FontSize="14" FontAttributes="Bold" Grid.Row="3" />
+
+                            <Image Source="stats" VerticalOptions="Start" HeightRequest="30" Grid.RowSpan="4" Grid.Column="1"/>
+
+                        </Grid>
+                    </Frame>
+
+                    <StackLayout Orientation="Vertical" Margin="20,40,20,10"
+             VerticalOptions="Fill" Grid.Row="6"
+             HorizontalOptions="StartAndExpand">
+                        <Label Margin="0,10,0,5" FontSize="28" Text="Jogos e Estatísticas" TextColor="Black" HorizontalTextAlignment="Center"/>
+                        <Label  Margin="0,5,0,15" FontSize="15" Text="detalhes somas e estatísticas geral" TextColor="Black" HorizontalTextAlignment="Center"/>
+                        <FlexLayout Direction="Column">
+                            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray"/>
+                        </FlexLayout>
+
+                        <ListView x:Name="estatisticas" 
+                  HasUnevenRows="True" 
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "True" 
+                     ItemTapped="estatisticas_ItemTapped"
+                      ItemSelected="estatisticas_ItemSelected">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="10" BackgroundColor="{Binding color_inscricao}">
+
+                                            <Grid.ColumnDefinitions>
+
+                                                <ColumnDefinition Width="8*" />
+                                                <ColumnDefinition Width="1.3*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <Grid VerticalOptions="Center"
+                                              Padding="10,0,0,0" Grid.Column="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="8*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+
+                                                <Label   VerticalOptions="Center" 
+                                                 FontSize="16"  TextColor="{Binding color_font}"
+                                                 Text="{Binding texto_botao}" />
+
+                                            </Grid>
+
+                                            <Label VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="2"
+                                                 FontSize="16" FontAttributes="Bold"  
+                                                   TextColor="{Binding color_font}"
+                                                 Text="{Binding item, StringFormat='{0}'}" />
+
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" Margin="20,40,20,10"
+             VerticalOptions="Fill" Grid.Row="7"
+             HorizontalOptions="StartAndExpand">
+                        <Label x:Name="txt_subtitle" Margin="0,10,0,5" FontSize="28" Text="Aproveitamento por Etapa" TextColor="Black" HorizontalTextAlignment="Center"/>
+                        <Label  Margin="0,5,0,15" FontSize="15" Text="clique para ver detalhes" TextColor="Black" HorizontalTextAlignment="Center"/>
+                        <FlexLayout Direction="Column">
+                            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray"/>
+                        </FlexLayout>
+
+                        <ListView x:Name="etapas" 
+                  HasUnevenRows="True" 
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "True" 
+                     ItemTapped="etapas_ItemTapped"
+                      ItemSelected="etapas_ItemSelected">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="10" BackgroundColor="{Binding color_inscricao}">
+
+                                            <Grid.ColumnDefinitions>
+
+                                                <ColumnDefinition Width="8*" />
+                                                <ColumnDefinition Width="5" />
+                                                <ColumnDefinition Width="1.3*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <Grid VerticalOptions="Center"
+                                              Padding="10,0,0,0" Grid.Column="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="8*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+
+                                                <Label   VerticalOptions="Center" 
+                                                 FontSize="16"  TextColor="{Binding color_font}"
+                                                 Text="{Binding Nome_Etapa}" />
+
+                                                <Label  VerticalOptions="Center" Grid.Row="1"
+                                                 FontSize="12" FontAttributes="Italic,Bold"
+                                                 Text="{Binding nome_categoria}" />
+
+                                            </Grid>
+
+                                            <BoxView Grid.Column="1" CornerRadius="2"
+                                                     HeightRequest="30" WidthRequest="70" 
+                                                BackgroundColor="{Binding color_arrow}" Opacity="0.9"/>
+
+                                            <Label VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="2"
+                                                 FontSize="16" FontAttributes="Bold"  
+                                                   TextColor="{Binding color_font}"
+                                                 Text="{Binding performance, StringFormat='{0}%'}" />
+
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </StackLayout>
+                </Grid>
+
+
+
+            </ScrollView>
+
+
+        </StackLayout>
+
+
+        <StackLayout x:Name="stk_semregistro" Grid.Row="1">
+            <Label Text="Não há registros para este usuário nesta temporada."
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+
+
+    </Grid>
+</ContentPage>

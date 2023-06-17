@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Lista_JogadoresTorneio" BackgroundColor="White" Padding="20,10,20,10">
+    <ContentPage.Content>
+
+        <StackLayout>
+
+            <StackLayout>
+                <Picker SelectedIndexChanged="pcCategoria_SelectedIndexChanged"
+                        x:Name="pcCategoria" Grid.Row="3" 
+                        HorizontalOptions="FillAndExpand" 
+                        Title="Selecione uma categoria:" 
+                        HeightRequest="50" 
+                        HorizontalTextAlignment="Center"
+                        ItemDisplayBinding="{Binding Categoria_Nome}">
+                    <Picker.Items>
+                        <x:String>1 Classe SM</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+
+            <Label x:Name="txt_subtitle" Text="Lista de Jogadores por categoria" TextColor="Black" HorizontalTextAlignment="Center"/>
+
+
+            <ListView x:Name="lista_jogadores" 
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "true" 
+                      ItemTapped="lista_jogadores_ItemTapped">
+
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+                        <!--<ImageCell Text="{Binding Nome_Etapa}" 
+                           Detail="{Binding Data_Limite}" 
+                           ImageSource="{Binding path_clube}"
+                           TextColor="DarkSlateGray"
+                           DetailColor="Gray" />-->
+
+                        <ViewCell>
+                            <Grid Padding="10" BackgroundColor="{Binding color_inscricao}">
+
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Frame CornerRadius="25" 
+                                           HeightRequest="50"
+                                           WidthRequest="50"
+                                           HorizontalOptions="Center"
+                                           Padding="0"
+                                           IsClippedToBounds="True"
+                                           Margin="0,0,10,0" HasShadow="False" >
+                                        <Image  Source="{Binding path_clube}"  />
+                                    </Frame>
+
+
+                                    <StackLayout VerticalOptions="Center" Orientation="Vertical">
+
+                                        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                            <Label VerticalOptions="Center" 
+                               FontSize="Small"  TextColor="{Binding color_font}"
+                               Text="{Binding Nome_Jogador_simples}" />
+                                           
+                                        </StackLayout>
+
+                                        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+
+                                            <Label VerticalOptions="Center" 
+                               FontSize="Small" TextColor="{Binding color_font}"
+                               Text="clube:"  FontAttributes="Bold"/>
+
+                                             <Label VerticalOptions="Center" HorizontalTextAlignment="End"  
+                               FontSize="Small" TextColor="{Binding color_font}"
+                               Text="{Binding Nome_Clube}" />
+
+                                            <Label VerticalOptions="Center" 
+                               FontSize="Small" TextColor="{Binding color_font}"
+                               Text="pontos:"  FontAttributes="Bold"/>
+
+                                            <Label VerticalOptions="Center"  
+                               FontSize="Small" TextColor="{Binding color_font}"
+                               Text="{Binding pontos}" />
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+
+                                    <StackLayout HorizontalOptions="EndAndExpand"  Orientation="Vertical">
+
+
+                                        <Label VerticalOptions="Center" 
+                               FontSize="Small" TextColor="{Binding color_font}"
+                               Text="{Binding string_pagamento}" />
+                                        <Label VerticalOptions="Center" 
+                               FontSize="Small" TextColor="{Binding color_font}"
+                               Text="{Binding situacao_inscricao}" />
+
+                                    </StackLayout>
+
+                                </StackLayout>
+
+
+
+
+                            </Grid>
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

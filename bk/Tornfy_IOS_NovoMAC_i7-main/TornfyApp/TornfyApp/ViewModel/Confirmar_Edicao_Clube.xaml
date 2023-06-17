@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Confirmar_Edicao_Clube"  Title="Confirmar Troca">
+    <ContentPage.Content>
+
+
+        <Grid Margin="0,0,0,0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="8*"/>
+
+            </Grid.RowDefinitions>
+
+
+
+
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center"  Grid.Row="1">
+
+
+                <Label  HorizontalOptions="Center" FontSize="Title" Text="Confirmar Troca de Clube" />
+
+                <Grid Margin="40,20,40,10"  Grid.Row="1">
+                    <Frame CornerRadius="8">
+
+                        <StackLayout Orientation="Vertical" Padding="10,10,10,10">
+
+                            <StackLayout Orientation="Horizontal" >
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" FontSize="Small" TextColor="Black" Text="Novo Clube: " />
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label VerticalOptions="Center" FontSize="Small"  x:Name="txt_nome_clube" />
+                                </StackLayout>
+                            </StackLayout>
+
+                        </StackLayout>
+
+
+                    </Frame>
+                </Grid>
+
+                <Button x:Name="btnConfirmar_edicao" 
+                        TextColor="#1f2225"
+                        Text="Confirmar Troca Clube"
+                        HeightRequest="50"
+                        BackgroundColor="#ffd900"
+                        Margin="40,20,40,0"
+                        VerticalOptions="Start"
+                        Clicked="btnConfirmar_edicao_Clicked"/>
+
+                <Button x:Name="btnCancelar_edicao" 
+                        TextColor="Black"
+                        BorderWidth="1"
+                        BorderColor="Gray"
+                        Text="Cancelar Troca Clube"
+                        HeightRequest="50"
+                        BackgroundColor="White"
+                        Margin="40,10,40,0"
+                        VerticalOptions="Start"
+                        Clicked="btnCancelar_edicao_Clicked"/>
+                <Label Text="Após confirmação os pontos futuros em etapas destta modalidade serão somadas para o ranking de clubes." 
+                       HorizontalOptions="Center" HorizontalTextAlignment="Center"  Margin="40,10,40,0" FontSize="12"/>
+
+
+            </StackLayout>
+
+
+
+
+        </Grid>
+
+
+
+
+    </ContentPage.Content>
+</ContentPage>

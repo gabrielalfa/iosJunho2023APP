@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rg1:PopupPage  xmlns:rg1="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                xmlns:TornfyApp="clr-namespace:TornfyApp" x:DataType="TornfyApp:MaskedBehavior"
+                x:Class="TornfyApp.MessageBox">
+
+    <Grid HeightRequest="265" VerticalOptions="End">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.RowSpan="2" HeightRequest="265" VerticalOptions="End" CornerRadius="30" Padding="20,0" BackgroundColor="White">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Image Source="email" HorizontalOptions="Center" VerticalOptions="Start" Aspect="Fill" HeightRequest="80" WidthRequest="80" Margin="0,20,0,20"/>
+                <StackLayout Orientation="Vertical" Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label x:Name="txt_titulo" FontSize="20" FontAttributes="Bold" TextColor="#E10555" HorizontalTextAlignment="Center" />
+                    <Label  x:Name="txt_mensagem" TextColor="#363636" FontSize="15"   />
+                </StackLayout>
+            </Grid>
+        </Frame>
+
+        <Button Grid.Row="1" Text="Fechar Mensagem" x:Name="btn_close" TextTransform="Uppercase" TextColor="White"  HeightRequest="45" Background="#E10555" Clicked="Button_Clicked" />
+    </Grid>
+
+
+</rg1:PopupPage>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Historico_Jogadores"  Title="Jogadores Cadastrados">
+   
+   
+        
+        
+
+           
+                <StackLayout>
+                    <SearchBar x:Name="txtSearch"
+                               SearchButtonPressed="txtSearch_SearchButtonPressed" 
+                       Placeholder="Buscar Nome/ID ou Email"
+                       Margin="30,0,30,0"></SearchBar>
+
+                   
+
+
+                    <ListView x:Name="lista_categorias" 
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" 
+                      ItemTapped="lista_categorias_ItemTapped" ItemSelected="lista_categorias_ItemSelected" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+
+                                <ViewCell>
+                                    <Grid Padding="0" BackgroundColor="{Binding color_inscricao}" >
+
+                                        <Grid.ColumnDefinitions>
+
+                                            <ColumnDefinition Width="8*" />
+                                            <ColumnDefinition Width="3*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid VerticalOptions="Center" Padding="10,0,0,0" Grid.Column="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="8*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <Image VerticalOptions="Center"  Source="{Binding Path}" HeightRequest="30"  />
+                                            <Label   VerticalOptions="Center" Grid.Column="1"
+                                                 FontSize="16" FontAttributes="Bold"  TextColor="{Binding color_font}"
+                                                 Text="{Binding Nome_Jogador}" />
+                                          
+                                        </Grid>
+
+
+                                        <StackLayout VerticalOptions="Center" 
+                                                 Grid.Column="1" HorizontalOptions="EndAndExpand"  
+                                                 Orientation="Vertical">
+                                            <Label VerticalOptions="Center" Margin="0,0,15,0" FontSize="Small" Text="{Binding id_Jogador, StringFormat='ID: {0}'}" />
+                                        </StackLayout>
+
+                                    </Grid>
+                                </ViewCell>
+
+
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+           
+            
+    
+</ContentPage>

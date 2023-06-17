@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Mostrar_Imagem">
+    <ContentPage.Content>
+        <Grid Margin="0,0,0,0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" 
+                            VerticalOptions="FillAndExpand" Grid.Row="0">
+                <Image  x:Name="image_cartaz" BackgroundColor="White"
+                       AbsoluteLayout.LayoutBounds="1,1,1,1"
+                       AbsoluteLayout.LayoutFlags="All"
+                       Aspect="AspectFit" Margin="20">
+
+                </Image>
+
+            </AbsoluteLayout>
+
+        </Grid>
+
+
+    </ContentPage.Content>
+</ContentPage>

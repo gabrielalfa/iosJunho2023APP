@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Fechamento_Pagamento" Title="Checkout Pgo">
+
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="menu_plus.png" Clicked="txt_plus_Clicked" x:Name="txt_plus"  Priority="1" Order="Primary" />
+    </ContentPage.ToolbarItems>-->
+     <ContentPage.ToolbarItems>
+       
+                    
+        <ToolbarItem Order="Primary"
+                     Text="Adicionar"
+                     Priority="1"
+                     Clicked="txt_plus_Clicked" />
+        
+    </ContentPage.ToolbarItems>
+
+    <Grid Padding="20, 20,20,30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.8*" />
+
+        </Grid.RowDefinitions>
+       
+        <StackLayout Orientation="Vertical"
+             VerticalOptions="Fill"
+             HorizontalOptions="StartAndExpand">
+
+            <Label  Margin="0,20,0,5" FontSize="Small" Text="Arraste para deletar (se necessário)" TextColor="Gray" HorizontalTextAlignment="Center"/>
+
+            <FlexLayout Direction="Column">
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray"/>
+            </FlexLayout>
+
+        </StackLayout>
+
+        <Label Grid.Row="1" x:Name="txt_vazio" 
+               FontSize="16" Margin="0,60,0,0" 
+               FontAttributes="Bold,Italic" 
+               Text="Não há inscrições para este registro!" 
+               HorizontalTextAlignment="Center"/>
+
+        <ListView Grid.Row="1" x:Name="lista_pagamentos" 
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" 
+                     ItemTapped="lista_pagamentos_ItemTapped"
+                      ItemSelected="lista_pagamentos_ItemSelected" Margin="10">
+            <ListView.ItemTemplate>
+
+
+                <DataTemplate>
+                    <ViewCell>
+
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                   
+                                    <SwipeItem Text="Deletar" BackgroundColor="Red" CommandParameter="{Binding id}"
+                                                   x:Name="DeleteSwipeItem"
+                                                   Invoked="DeleteMenuItem_Clicked"></SwipeItem>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+
+                            <Grid Padding="0">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*" />
+                                    <ColumnDefinition Width="Auto" />
+
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                </Grid.RowDefinitions>
+
+                                <StackLayout  Grid.Column="0" Orientation="Vertical" VerticalOptions="Center">
+                                    <Label FontSize="16" FontAttributes="Bold"  TextColor="{Binding color_font}"
+                                                 Text="{Binding Categoria}" />
+                                </StackLayout>
+
+                                <StackLayout  Grid.Column="1"  Orientation="Vertical" VerticalOptions="Center" >
+
+                                    <Label FontSize="16" FontAttributes="Bold"  TextColor="{Binding color_font}"
+                                                 Text="{Binding valor, StringFormat='R$ {0},00'}" />
+                                    <Label   HorizontalTextAlignment="End"
+                                     FontSize="14" FontAttributes="Bold"  TextColor="{Binding color}"
+                                                 Text="{Binding status_pgo_final}" />
+                                </StackLayout>
+
+
+                            </Grid>
+                        </SwipeView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+      
+        <Grid Grid.Row="2" BackgroundColor="#dedede" Padding="0" Margin="20,0,20,10">
+            <Label FontSize="40" FontAttributes="Bold"  VerticalOptions="Center" HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="R$"/>
+                        <Span x:Name="valor_pgo" TextColor="Black"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Grid>
+
+         <Button x:Name="btn_pgoCredito" Grid.Row="3"   HeightRequest="55" WidthRequest="145"
+                   Background="#ffd900"  Clicked="btn_pgoCredito_Clicked" FontSize="16" Margin="20,0,20,20"  
+                CornerRadius="8" TextColor="Black" FontAttributes="Bold" />
+
+        <Button x:Name="btn_pgoPix" Grid.Row="3" Text="Gerar QR Code"  HeightRequest="55" WidthRequest="145"
+                   Background="#3c62aa"  Clicked="btn_pgoPix_Clicked" FontSize="16" Margin="20,0,20,20"  
+                CornerRadius="8" TextColor="White" FontAttributes="Bold" />
+
+        <Button x:Name="btn_naoValores" Grid.Row="3" Text="NÃO HÁ VALORES A PAGAR" BorderColor="LightGray" BorderWidth="1"  HeightRequest="55" WidthRequest="145"
+                   Background="#fff"  Clicked="btn_naoValores_Clicked_1" FontSize="18" Margin="20,0,20,20"  
+                CornerRadius="8" TextColor="Black" FontAttributes="Bold" />
+        
+    </Grid>
+</ContentPage>

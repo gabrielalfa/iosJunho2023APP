@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm11="clr-namespace:TornfyApp.Model"
+             x:Class="TornfyApp.ViewModel.LoginPage_oficial" 
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <vm11:ConfirmaCPFViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="#fff">
+
+            
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto" Margin="30,30,30,170"
+                      RowSpacing="20" VerticalOptions="End">
+
+                    <Image Grid.Row="0"  Source="tornfylogo.png" Margin="50,100,50,0"
+                           HeightRequest="70" WidthRequest="70" Aspect="AspectFit"/>
+
+                    <Entry  x:Name="txtEmail" Grid.Row="1" Placeholder="Digite seu Email ou CPF"
+                            HeightRequest="55" WidthRequest="115" PlaceholderColor="#1f2225"
+                    TextColor="#1f2225"  ClearButtonVisibility="WhileEditing" Keyboard="Email">
+                    </Entry>
+
+                    <Entry  x:Name="txtSenha" Grid.Row="2" Placeholder="Informe sua Senha"
+                            HeightRequest="55" WidthRequest="115" PlaceholderColor="#1f2225"
+                    TextColor="#1f2225"  ClearButtonVisibility="WhileEditing" Keyboard="Text" IsPassword="True">
+                    </Entry>
+
+
+                    <StackLayout Grid.Row="3" Orientation="Vertical" Spacing="20" VerticalOptions="End">
+                        <Button Text="Logar-se"  HeightRequest="55" WidthRequest="145"
+                   Background="#ffd900" Clicked="Button_Clicked"  CornerRadius="8" TextColor="#1f2225" FontAttributes="Bold" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4" Orientation="Vertical" Spacing="10" VerticalOptions="End">
+                        <Button Text="Registrar"  HeightRequest="55" WidthRequest="145"
+                   Background="#e9e9e9" Clicked="Button_Clicked_1" CornerRadius="8"
+                   TextColor="#2E4159" FontAttributes="Bold" />
+
+                    </StackLayout>
+
+                    <Grid Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label BackgroundColor="#1f2225" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                        <Label Text="OU"  TextColor="#1f2225" Grid.Column="1" VerticalOptions="Center" Margin="10,0,10,0"/>
+                        <Label BackgroundColor="#1f2225" Grid.Column="2" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                    </Grid>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Grid.Row="6">
+                        <Label Text="Lembrar Senha, clique aqui..." TextTransform="Uppercase" TextColor="#1f2225" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LembrarSenha_Comand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+
+                </Grid>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

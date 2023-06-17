@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Circuitos_Modalidade"  Padding="0,0,10,10" >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"
+                     Text="Icon Item"
+                     Priority="0" 
+                     IconImageSource="tornfylogo_ios.png"/>
+                    
+        <ToolbarItem Order="Primary"
+                     Text="Recentes"
+                     Priority="1"
+                     Clicked="ToolbarItem_Clicked_1" />
+        
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <SearchBar Margin="10,0,10,0" x:Name="txt_busca" SearchButtonPressed="txt_busca_SearchButtonPressed" ></SearchBar>
+
+        <ListView x:Name="listagem_circuitos"
+                  ItemTapped="listagem_circuitos_ItemTapped" 
+              ItemSelected="listagem_circuitos_ItemSelected"
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" >
+
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <ViewCell>
+                        <Grid ColumnSpacing="10" Padding="0,10,20,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="7*"/>
+                                <ColumnDefinition Width="2.5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout  Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" Orientation="Vertical">
+
+                                <Image HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center" Source="{Binding path}"/>
+
+                            </StackLayout>
+
+                            <BoxView Grid.Column="1" CornerRadius="2" HeightRequest="70" WidthRequest="70" 
+                                     BackgroundColor="#3c62aa" Opacity="0.9"/>
+
+                            <StackLayout Grid.Column="2" Orientation="Horizontal">
+
+                                <StackLayout Orientation="Vertical">
+
+                                    <Label VerticalOptions="Center" FontAttributes="Bold"  FontSize="14"  Text="{Binding grupo_nome}" />
+
+
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+
+                                        <Label VerticalOptions="Center"  FontSize="Small"  TextColor="Black" Text="Pontos:" />
+                                        <Label VerticalOptions="Center" FontSize="Small"  Text="{Binding Nome_Ranking}" />
+                                        <!--<Label VerticalOptions="Center"  FontSize="Small" TextColor="Black" Text=" - " />
+                                        <Label VerticalOptions="Center"  FontSize="Small" Text="{Binding Fim}" />-->
+                                    </StackLayout>
+
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                        <Label VerticalOptions="Center"  FontSize="Small"  TextColor="Black"  Text="Etapas Ativas:" />
+                                        <Label VerticalOptions="Center"  FontSize="Small"  FontAttributes="Italic" Text="{Binding qtd_etp_abertas}" />
+                                        <Label VerticalOptions="Center"  FontSize="Small"  TextColor="Black"  Text="/" />
+                                        <Label VerticalOptions="Center"  FontSize="Small"  FontAttributes="Italic" Text="{Binding qtd_etp}" />
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                            </StackLayout>
+
+                            <StackLayout   Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal">
+                                <Button CornerRadius="5" Padding="10" Clicked="Button_Clicked" HorizontalOptions="Center" VerticalOptions="Center"
+                                        HeightRequest="35" TextTransform="Lowercase" TextColor="#1f2225" BackgroundColor="#ffd900" Text="etapas" />
+                            </StackLayout>
+
+
+                        </Grid>
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!--</Frame>-->
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Editar_ClubeJogador">
+    <ContentPage.Content>
+        <StackLayout>
+
+
+            <Grid Margin="20,30,30,10" RowSpacing="150" >
+                <Frame CornerRadius="20">
+
+                    <StackLayout Orientation="Vertical" Padding="10,10,10,60">
+
+                        <StackLayout Orientation="Horizontal" >
+
+                            <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" FontSize="Small" TextColor="Black" Text="Clube Atual: " />
+
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" FontSize="Small"  x:Name="txt_clube_Atual" />
+                            </StackLayout>
+
+                        </StackLayout>
+
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
+            <Label Margin="30,30,0,20" Grid.Row="1" Text="Escolher um novo Clube para defender!!!"/>
+
+            <SearchBar x:Name="txtSearch" 
+                       TextChanged="txtSearch_TextChanged" 
+                       Placeholder="Buscar Nome/ID ou Email"
+                       Margin="0,0,30,0"></SearchBar>
+
+            <ListView x:Name="lista_clubes" 
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "false"
+                      ItemTapped="lista_clubes_ItemTapped"
+                      ItemSelected="lista_clubes_ItemSelected"
+                      IsGroupingEnabled="True" GroupDisplayBinding="{Binding Key}"   >
+
+
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <ViewCell>
+                            <Grid Padding="10" BackgroundColor="{Binding color_inscricao}">
+
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+
+
+                                        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                            <Label VerticalOptions="Center"  
+                                                   FontSize="18"
+                                                   Margin="10,10,0,10"
+                                                   Text="{Binding String_Clube}" />
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                    <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand" 
+                                                 Orientation="Horizontal">
+                                        <Label VerticalOptions="Center" Margin="0" FontAttributes="Bold" FontSize="Small" Text="SIGLA:" />
+                                        <Label VerticalOptions="Center" Margin="0,0,15,0" FontSize="Small" Text="{Binding Nome_CLube}" />
+
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                            </Grid>
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

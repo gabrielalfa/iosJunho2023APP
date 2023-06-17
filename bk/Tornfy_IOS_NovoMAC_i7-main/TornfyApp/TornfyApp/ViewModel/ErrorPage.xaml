@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.ErrorPage" BackgroundColor="#fff">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Image Source="error" Margin="40" VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <StackLayout Grid.Row="3" Orientation="Vertical" Spacing="20" Padding="20" VerticalOptions="End">
+                <Button Text="Acessar Central de Ajuda"  HeightRequest="55" WidthRequest="145"
+                   Background="#ff4f5a" Clicked="Button_Clicked" CornerRadius="8" TextColor="#385a64" FontAttributes="Bold" />
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+

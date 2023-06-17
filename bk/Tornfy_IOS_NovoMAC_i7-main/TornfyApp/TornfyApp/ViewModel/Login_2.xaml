@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:TornfyApp.Model"
+             x:Class="TornfyApp.ViewModel.Login_2">
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <Grid>
+        <Image Source="balls_foto.jpg"  Aspect="AspectFill"/>
+
+        <BoxView>
+            <BoxView.Background>
+
+                <LinearGradientBrush StartPoint="1,0" EndPoint="1,1" >
+                    <GradientStop Color="Transparent" Offset="0"/>
+                    <GradientStop Color="#2E4159" Offset="0.9"/>
+                    <GradientStop Color="#2E4159" Offset="1"/>
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+        <Grid RowDefinitions="Auto">
+            <Image  Source="ict_branco.png" Margin="0,100,0,0"  HeightRequest="120" WidthRequest="120" Aspect="AspectFit"/>
+        </Grid>
+
+        <Grid RowDefinitions="Auto, Auto, Auto" HeightRequest="250" Margin="30,30,30,100"
+                      RowSpacing="40" VerticalOptions="End">
+
+            <CarouselView  x:Name="vcOnbording" IndicatorView="LadingIndicator"
+                          ItemsSource="{Binding Onbording}" VerticalOptions="End">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="10">
+                            <Label Text="{Binding Heading}" TextColor="White" FontSize="26" FontAttributes="Bold"
+                                   WidthRequest="350" HorizontalOptions="Start" />
+                            <Label Text="{Binding Caption}" TextColor="White" FontSize="16" 
+                                   WidthRequest="280" HorizontalOptions="Start" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <IndicatorView x:Name="LadingIndicator" Grid.Row="1" IndicatorsShape="Circle" 
+                           IndicatorColor="#B8B8B8" SelectedIndicatorColor="#009bde"/>
+            <StackLayout Grid.Row="2" Orientation="Horizontal" Spacing="20" VerticalOptions="End">
+                <Button Text="Logar-se"  HeightRequest="55" WidthRequest="145"
+                   Background="#009bde" Clicked="Button_Clicked_1" CornerRadius="25" TextColor="White" FontAttributes="Bold" />
+                <Button Text="Registrar-se" Clicked="Button_Clicked" HeightRequest="55" WidthRequest="145"
+                   Background="White" CornerRadius="25" TextColor="#2E4159" FontAttributes="Bold" />
+
+            </StackLayout>
+
+        </Grid>
+
+    </Grid>
+</ContentPage>

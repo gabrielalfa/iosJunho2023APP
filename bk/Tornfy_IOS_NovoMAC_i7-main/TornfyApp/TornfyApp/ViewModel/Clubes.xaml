@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Clubes" Title="Clubes Cadastrados">
+
+    
+
+    <StackLayout>
+        <SearchBar Placeholder="Buscar Clube..."
+                   Margin="20,0,20,0" x:Name="txt_busca"
+                   SearchButtonPressed="txt_busca_SearchButtonPressed" ></SearchBar>
+
+        <Label Text="Clique sobre o item da lista para fazer contato com o representando do clube ou arena." 
+                       HorizontalOptions="Center" HorizontalTextAlignment="Center"  Margin="40,10,40,10" FontSize="14"/>
+
+        <ListView x:Name="listagem_clubes"
+                  ItemTapped="listagem_clubes_ItemTapped"
+                  ItemSelected="listagem_clubes_ItemSelected"
+             ItemAppearing="listagem_clubes_ItemAppearing"
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" >
+
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <ViewCell>
+                        <Grid ColumnSpacing="10" Padding="0,10,20,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="7*"/>
+
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout  Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Orientation="Vertical">
+                                <Image  Source="{Binding path}" WidthRequest="40" Margin="20,0,0,0" />
+                            </StackLayout>
+
+                            <BoxView CornerRadius="2" Grid.Column="1" HeightRequest="70" WidthRequest="70" 
+                                     BackgroundColor="#566065" Opacity="0.5"/>
+
+                            <StackLayout Grid.Column="2" Orientation="Horizontal">
+
+                                <StackLayout Orientation="Vertical">
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <!--<Image Source="ball_tennis" HeightRequest="16"/>-->
+                                        <Label VerticalOptions="Center" FontAttributes="Bold"  FontSize="Medium"  Text="{Binding String_Clube}" />
+                                        <Label VerticalOptions="Center" FontAttributes="Italic"  FontSize="Medium"  Text="{Binding Nome_CLube, StringFormat='({0})'}" />
+                                    </StackLayout>
+
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                        <Label VerticalOptions="Center" FontSize="Small"  Text="{Binding cidade, StringFormat='{0}'}" />
+                                        <Label VerticalOptions="Center" FontAttributes="Italic"  FontSize="Medium"  Text="{Binding UF, StringFormat='({0})'}" />
+                                    </StackLayout>
+
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                        <Label VerticalOptions="Center"  FontSize="Small"  TextColor="Black"  Text="Diretor:" />
+                                        <Label VerticalOptions="Center"  FontSize="Small"   Text="{Binding Responsavel}" />
+                                    </StackLayout>
+
+
+
+                                </StackLayout>
+
+                            </StackLayout>
+
+
+
+                        </Grid>
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!--</Frame>-->
+    </StackLayout>
+</ContentPage>

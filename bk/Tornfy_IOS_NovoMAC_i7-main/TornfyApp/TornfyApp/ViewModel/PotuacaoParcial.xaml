@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.PotuacaoParcial">
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical" Margin="20,20,20,20"
+             VerticalOptions="Fill"
+             HorizontalOptions="StartAndExpand">
+
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Label HorizontalOptions="Center" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold" Padding="0,10,0,0" TextColor="Gray" x:Name="txt_top"  />
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Label HorizontalOptions="Center" VerticalOptions="Center" FontSize="Medium"  Padding="3" TextColor="Gray" x:Name="txt_nome"  />
+                <Image x:Name="img_ball" Source="ball_tennis.png"  HeightRequest="15"/>
+            </StackLayout>
+
+            <FlexLayout Direction="Column">
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray"/>
+            </FlexLayout>
+
+            <ListView x:Name="lst_ponrutacaoParcial" 
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" 
+                     ItemTapped="lst_ponrutacaoParcial_ItemTapped"
+                      ItemSelected="lst_ponrutacaoParcial_ItemSelected">
+
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <ViewCell>
+                            <Grid Padding="18" BackgroundColor="{Binding color_inscricao}">
+
+                                 <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="1"/>
+                           
+                        </Grid.ColumnDefinitions>
+
+                                <StackLayout Orientation="Horizontal">
+
+
+                                        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+
+                                            <Label VerticalOptions="Center" HorizontalTextAlignment="Start"  
+                                                     FontSize="14"  TextColor="Gray"
+                                                   Text="{Binding Nome_Clube}" />
+                                    </StackLayout>
+
+                                   
+
+                                    <StackLayout HorizontalOptions="EndAndExpand" Grid.Column="1" Orientation="Horizontal">
+                                       
+                                        <Label VerticalOptions="Center" HorizontalOptions="End"  
+                                         FontSize="14"  TextColor="Gray" FontAttributes="Bold"
+                                         Text="{Binding Pontuacao_temp}" />
+
+                                    </StackLayout>
+
+                                </StackLayout>
+
+
+
+
+                            </Grid>
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

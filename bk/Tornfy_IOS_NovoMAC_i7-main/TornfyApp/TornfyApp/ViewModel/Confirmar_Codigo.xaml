@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm11="clr-namespace:TornfyApp.Model"
+             x:Class="TornfyApp.ViewModel.Confirmar_Codigo">
+    <ContentPage.BindingContext>
+        <vm11:ConfirmaCPFViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="#3c62aa">
+
+
+            <Grid RowDefinitions="Auto">
+                <Image  Source="movelogo.png" Margin="0,100,0,0"  HeightRequest="80"  Aspect="AspectFit"/>
+            </Grid>
+
+            <ScrollView>
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" HeightRequest="330" Margin="30,30,30,190"
+                      RowSpacing="20" VerticalOptions="End">
+
+                    <Label Text="Enviamos ao seu email um código de confirmação de 6 digitos"  
+                           TextColor="#fff" VerticalOptions="Center" Margin="10,0,10,0" FontSize="18" HorizontalOptions="Center" />
+
+                    <Entry Grid.Row="1"  x:Name="txtCodigo" Placeholder="Informar Código "  
+                           HeightRequest="55" WidthRequest="115" PlaceholderColor="DarkGray"
+                    TextColor="Black"  ClearButtonVisibility="WhileEditing" Keyboard="Numeric">
+                    </Entry>
+
+                    <StackLayout Grid.Row="2" Orientation="Vertical" Spacing="20" VerticalOptions="End">
+                        <Button Text="CONFIRMAR CÓDIGO"  HeightRequest="55" WidthRequest="145"
+                                Background="#E7305E" Clicked="btn_confirmar_Clicked" x:Name="btn_confirmar" 
+                                CornerRadius="25" TextColor="White" FontAttributes="Bold" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="3" Orientation="Vertical" Spacing="10" VerticalOptions="End">
+                        <Button Text="Cancelar"  HeightRequest="55" WidthRequest="145"
+                   Background="White" Clicked="Button_Clicked" CornerRadius="25" 
+                                TextColor="#2E4159" FontAttributes="Bold" />
+
+                    </StackLayout>
+
+
+
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

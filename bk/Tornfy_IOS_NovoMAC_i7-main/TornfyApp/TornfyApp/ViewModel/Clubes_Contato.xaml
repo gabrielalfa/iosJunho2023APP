@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Clubes_Contato" Title="Contato de Clube">
+   
+    <StackLayout>
+
+        <Label Text="Clique sobre o item da lista para fazer contato com o representando do clube ou arena." 
+                       HorizontalOptions="Center" HorizontalTextAlignment="Center"  Margin="40,10,40,10" FontSize="14"/>
+
+        <ListView x:Name="listagem_clubes"
+                  ItemTapped="listagem_clubes_ItemTapped" 
+             ItemSelected="listagem_clubes_ItemSelected"
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" >
+
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <ViewCell>
+                        <Grid ColumnSpacing="0" Padding="30,10,20,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label VerticalOptions="Center" FontAttributes="Italic"  FontSize="Medium"  Text="{Binding item}" />
+                            <StackLayout  Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Orientation="Horizontal">
+                                <Button Clicked="Button_Clicked" CornerRadius="5"
+                                        HeightRequest="35" TextColor="#1f2225" Padding="10"
+                                        BackgroundColor="#ffd900" Text="{Binding texto_botao}" />
+                            </StackLayout>
+
+                        </Grid>
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!--</Frame>-->
+    </StackLayout>
+</ContentPage>

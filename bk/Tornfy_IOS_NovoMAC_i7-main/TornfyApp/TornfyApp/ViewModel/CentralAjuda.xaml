@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.CentralAjuda" Title="FAQ - Ajuda">
+    
+
+    <ContentPage.Content BackgroundColor="#e8ebef">
+
+        <ScrollView BackgroundColor="#e8ebef">
+            <Grid Margin="0,0,0,0" Padding="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ListView x:Name="carroucel_days" Margin="30"
+                  ItemTapped="carroucel_days_ItemTapped" 
+                  ItemSelected="carroucel_days_ItemSelected"
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" >
+
+                    <ListView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <ViewCell>
+                                <Frame HasShadow="False" >
+                                    <Grid ColumnSpacing="10" Padding="0,10,0,10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout  Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" Orientation="Vertical">
+                                            <Frame BackgroundColor="{Binding cor_botao}" VerticalOptions="Center"
+                                                   CornerRadius="8" HeightRequest="30">
+                                                <Image Source="{Binding icone}" />
+                                            </Frame>
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Column="1" Orientation="Horizontal">
+                                            <StackLayout Orientation="Vertical">
+                                                <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                                    <Label VerticalOptions="Center"  FontSize="24" Text="{Binding titulo}" TextColor="Black" FontFamily="calibri"  />
+                                                    <Label VerticalOptions="Center" FontSize="16"  Text="{Binding texto}" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <StackLayout  Grid.Column="3" HorizontalOptions="End" Orientation="Horizontal">
+                                            <Image HorizontalOptions="End"  Source="{Binding path_clube}" WidthRequest="50" Margin="0,0,0,0" />
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

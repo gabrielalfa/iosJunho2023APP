@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Main_ranking" Title="Circuitos Tornfy">
+    
+
+    <ScrollView>
+
+        <StackLayout>
+            <SearchBar Placeholder="Buscar Circuito Cadastrados" Margin="30,0,30,10" x:Name="txt_busca" SearchButtonPressed="txt_busca_SearchButtonPressed" ></SearchBar>
+
+            <ListView x:Name="listagem_torneios"
+                  ItemTapped="listagem_torneios_ItemTapped" 
+              ItemSelected="listagem_torneios_ItemSelected"
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" >
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnSpacing="10" Padding="0,10,20,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2.4*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="9*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout  Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" Orientation="Vertical">
+                                    <Image HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" Source="{Binding path}"/>
+                                </StackLayout>
+                                <BoxView Grid.Column="1" CornerRadius="2" HeightRequest="40" WidthRequest="50" 
+                                     BackgroundColor="#3c62aa" Opacity="0.9"/>
+                                <StackLayout Grid.Column="2" Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical">
+                                        <Label VerticalOptions="Center" FontAttributes="Bold"  FontSize="14"  Text="{Binding grupo_nome}" />
+                                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                            <Label VerticalOptions="Center"  FontSize="Small"  TextColor="Black" Text="Pontos:" />
+                                            <Label VerticalOptions="Center" FontSize="Small"  Text="{Binding Nome_Ranking}" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Programacao_Tela"  Title="Meus Jogos">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"
+                     Text="Icon Item"
+                     Priority="0" 
+                     IconImageSource="tornfylogo_ios.png"/>
+                    
+       
+        
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Margin="5">
+        <SearchBar Placeholder="Buscar jogadores..." x:Name="txt_busca" Margin="20" FontSize="15"
+                   SearchButtonPressed="txt_busca_SearchButtonPressed" Background="#fff" PlaceholderColor="Gray" ></SearchBar>
+
+        <StackLayout x:Name="no_data">
+            <Label Text="Não houve registros!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <ListView x:Name="listagem_torneios" 
+                             HasUnevenRows="True"
+                             SeparatorVisibility="Default"
+                             BackgroundColor="Transparent"
+                             IsPullToRefreshEnabled="False"
+                             ItemTapped="listagem_torneios_ItemTapped"
+                             >
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid BackgroundColor="#F0F0F0">
+                            <Label Text="{Binding Key}"
+                           FontAttributes="Bold, Italic" TextTransform="Uppercase"
+                           FontSize="18"
+                           VerticalOptions="Center"
+                           Margin="10,5,10,5" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
+
+
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <ViewCell>
+                        <Frame Padding="10" HasShadow="True" CornerRadius="5" Margin="6" >
+                            <Grid ColumnSpacing="0" RowSpacing="6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70*" />
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="9*" />
+                                    <ColumnDefinition Width="9*" />
+                                    <ColumnDefinition Width="9*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="1" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+                                    <Label Text="{Binding Nome_categoria, StringFormat='Categoria: {0}'}" 
+                                             HorizontalOptions="StartAndExpand"
+                                             VerticalTextAlignment="Center" 
+                                             FontAttributes="Bold" />
+                                                                      <Label Text="{Binding Data}" 
+                                             HorizontalOptions="End"
+                                             VerticalTextAlignment="Center"  
+                                             FontAttributes="Italic" />
+                                </StackLayout>
+
+
+                                <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" BackgroundColor="Gray" />
+
+                                <Label Grid.Row="2" Grid.Column="0" Text="{Binding Nome_Jogador1}" VerticalTextAlignment="Center" FontAttributes="{Binding bold_jog_1}" />
+                                <BoxView CornerRadius="2" Grid.Row="2" Grid.Column="1" BackgroundColor="{Binding color_1}" Opacity="0.9" />
+
+
+                                <Label Grid.Row="2" Grid.Column="2" Text="{Binding set1_j1}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="{Binding bs_1_j1}"/>
+                                <Label Grid.Row="2" Grid.Column="3" Text="{Binding set2_j1}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="{Binding bs_2_j1}"/>
+                                <Label Grid.Row="2" Grid.Column="4" Text="{Binding set3_j1}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="{Binding bs_3_j1}"/>
+
+                                <Label Grid.Row="3" Grid.Column="0" Text="{Binding Nome_Jogador2}" VerticalTextAlignment="Center" FontAttributes="{Binding bold_jog_2}"/>
+                                <BoxView CornerRadius="2" Grid.Row="3" Grid.Column="1" BackgroundColor="{Binding color_2}" Opacity="0.9" />
+                                <Label Grid.Row="3" Grid.Column="2" Text="{Binding set1_j2}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="{Binding bs_1_j2}"/>
+                                <Label Grid.Row="3" Grid.Column="3" Text="{Binding set2_j2}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="{Binding bs_1_j2}"/>
+                                <Label Grid.Row="3" Grid.Column="4" Text="{Binding set3_j2}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="{Binding bs_1_j2}"/>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
+        <!--</Frame>-->
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Fechamento_PagamentoLocacao">
+   <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.8*" />
+
+        </Grid.RowDefinitions>
+
+       
+        <StackLayout Orientation="Vertical"
+             VerticalOptions="FillAndExpand"
+             HorizontalOptions="FillAndExpand">
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10">
+                <DatePicker x:Name="startDatePicker" Format="d" HorizontalOptions="FillAndExpand" />
+                <Label Text="to" VerticalOptions="CenterAndExpand" />
+                <DatePicker x:Name="endDatePicker" Format="d" HorizontalOptions="FillAndExpand" />
+                <Button WidthRequest="60" TextColor="Black" Text="filtrar" BorderWidth="1" BorderColor="Gray"
+                        CornerRadius="8" HorizontalOptions="End" Clicked="Button_Clicked" />
+            </StackLayout>
+
+            <BoxView HorizontalOptions="FillAndExpand" Margin="0,20,0,5" HeightRequest="1" Color="Gray" />
+            <Label  FontAttributes="Bold" FontSize="Small" Text="Locações por data (dd/mm/yy hh:mm)"
+                     TextColor="Black" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+
+            
+        </StackLayout>
+
+      
+
+        <ListView Grid.Row="1" x:Name="lista_pagamentos" 
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "True" 
+                     ItemTapped="lista_pagamentos_ItemTapped"
+                      ItemSelected="lista_pagamentos_ItemSelected" Margin="10">
+            <ListView.ItemTemplate>
+
+
+                <DataTemplate>
+                    <ViewCell>
+
+                        <SwipeView>
+                           
+                            <Grid Padding="0">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*" />
+                                    <ColumnDefinition Width="Auto" />
+
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                </Grid.RowDefinitions>
+
+                                <StackLayout  Grid.Column="0" Orientation="Vertical" VerticalOptions="Center">
+                                    <Label FontSize="16" FontAttributes="Bold"  TextColor="{Binding color_font}"
+                                                 Text="Locação de Quadra" />
+                                    <Label HorizontalTextAlignment="Start"
+                                     FontSize="14" FontAttributes="Bold"  TextColor="#adb5bd"
+                                                 Text="{Binding data, StringFormat='{0}'}" />
+                                </StackLayout>
+
+                                <StackLayout  Grid.Column="1"  Orientation="Vertical" VerticalOptions="Center" >
+
+                                    <Label FontSize="16" FontAttributes="Bold"  HorizontalTextAlignment="End" TextColor="Black"
+                                                 Text="{Binding valor_cobranca}"  />
+                                    <Label   HorizontalTextAlignment="End"
+                                     FontSize="14" FontAttributes="Bold"  TextColor="{Binding color_valor}"
+                                                 Text="{Binding status_pgo_final}" />
+                                </StackLayout>
+
+
+                            </Grid>
+                        </SwipeView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+              
+        <Grid Grid.Row="2" BackgroundColor="White" Padding="0">
+            <Label FontSize="40" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="R$"/>
+                        <Span x:Name="valor_pgo" TextColor="Black"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Grid>
+
+
+        <Button x:Name="btn_pgoPix" Grid.Row="3" Text="Gerar QR Code"  HeightRequest="55" WidthRequest="145"
+                   Background="#3c62aa" Clicked="btn_pgoPix_Clicked_1" FontSize="16" Margin="20,0,20,20"  
+                CornerRadius="8" TextColor="White" FontAttributes="Bold" />
+
+        <Button x:Name="btn_naoValores" Grid.Row="3" Text="NÃO HÁ VALORES A PAGAR" BorderColor="LightGray" BorderWidth="1"  HeightRequest="55" WidthRequest="145"
+                   Background="#fff"  Clicked="btn_naoValores_Clicked" FontSize="18" Margin="20,0,20,20"  
+                CornerRadius="8" TextColor="Black" FontAttributes="Bold" />
+
+        <Button x:Name="btn_credito" Grid.Row="3"  BorderColor="LightGray" BorderWidth="1"  HeightRequest="55" WidthRequest="145"
+                   Background="#3c62aa"  Clicked="btn_credito_Clicked" FontSize="18" Margin="20,0,20,20"  
+                CornerRadius="8" TextColor="#fff" FontAttributes="Bold" />
+
+
+    </Grid>
+</ContentPage>

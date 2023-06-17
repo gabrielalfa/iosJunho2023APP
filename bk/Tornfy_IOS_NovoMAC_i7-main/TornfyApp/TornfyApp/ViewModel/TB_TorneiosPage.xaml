@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.TB_TorneiosPage"
+             Title="Inscrição e Info" 
+            
+            TabbedPage.BarBackgroundColor="#f2f3f4"
+            >
+    <TabbedPage.ToolbarItems>
+        <!--<ToolbarItem x:Name="no_fav" IconImageSource="favorito_preto.png" Clicked="no_fav_Clicked" Priority="1" Order="Primary" />
+        <ToolbarItem x:Name="fav" IconImageSource="favorito_preto_cheio.png" Clicked="fav_Clicked" Priority="1" Order="Primary" />-->
+
+
+        <ToolbarItem Order="Primary" x:Name="no_fav"
+                     Text="Fav"
+                     Priority="1"
+                     Clicked="no_fav_Clicked" />
+        <ToolbarItem Order="Primary" x:Name="fav"
+                     Text="Desfav."
+                     Priority="1"
+                     Clicked="fav_Clicked" />
+
+
+
+
+    </TabbedPage.ToolbarItems>
+
+
+</TabbedPage>

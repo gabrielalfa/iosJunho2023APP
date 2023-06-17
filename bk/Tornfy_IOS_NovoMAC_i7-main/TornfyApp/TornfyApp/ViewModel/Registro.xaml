@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:xct="clr-namespace:TornfyApp"
+             x:Class="TornfyApp.ViewModel.Registro">
+    <ContentPage.Content>
+
+
+        <Grid BackgroundColor="#fff">
+
+            <Grid RowDefinitions="Auto">
+                <Image  Source="tornfylogo.png" Margin="0,100,0,0"  HeightRequest="70" WidthRequest="70" Aspect="AspectFit"/>
+            </Grid>
+
+            <ScrollView>
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto,Auto,Auto"  Margin="30,230,30,320"
+                      RowSpacing="20" VerticalOptions="End">
+
+                    <Grid ColumnDefinitions="*, *" >
+
+                        <Entry  x:Name="txtNome" Placeholder="Nome"  HeightRequest="55" HorizontalOptions="Fill" PlaceholderColor="#b1b2b3"
+                    TextColor="#1f2225"  ClearButtonVisibility="WhileEditing" Keyboard="Text">
+                        </Entry>
+                        <Entry Grid.Column="1" x:Name="txtSobreNome" Placeholder="Sobrenome" 
+                                   HeightRequest="55" HorizontalOptions="Fill" PlaceholderColor="#b1b2b3"
+                    TextColor="#1f2225"  ClearButtonVisibility="WhileEditing" Keyboard="Text">
+                        </Entry>
+
+                    </Grid>
+
+                     <Grid ColumnDefinitions="0.6*, 0.4*" Grid.Row="1">
+
+                        <Entry Grid.Column="0" x:Name="txtEmail" Placeholder="Digite seu Email"  HeightRequest="55" WidthRequest="115" PlaceholderColor="#b1b2b3"
+                    TextColor="#1f2225" FontSize="16"  ClearButtonVisibility="WhileEditing" Keyboard="Email">
+                        </Entry>
+
+                        <Entry Grid.Column="1" x:Name="txtNasc" Placeholder="Nascimento"  HeightRequest="55" WidthRequest="115" PlaceholderColor="#b1b2b3"
+                    TextColor="#1f2225" FontSize="16"  ClearButtonVisibility="WhileEditing" Keyboard="Numeric">
+                            <Entry.Behaviors>
+                                <xct:MaskedBehavior  Mask="XX/XX/XXXX"   />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                    </Grid>
+
+
+
+                    <Grid ColumnDefinitions="*, *" Grid.Row="2">
+
+                        <Entry  x:Name="txtTelefone" Placeholder="Telefone"  HeightRequest="55" HorizontalOptions="Fill" PlaceholderColor="#b1b2b3"
+                    TextColor="#1f2225"  ClearButtonVisibility="WhileEditing" Keyboard="Telephone">
+                            <Entry.Behaviors>
+                                <xct:MaskedBehavior  Mask="(XX)X.XXXX-XXXX"  />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry Grid.Column="1" x:Name="txtSenha" Placeholder="Senha" 
+                                   HeightRequest="55" HorizontalOptions="Fill" PlaceholderColor="#b1b2b3"
+                    TextColor="#1f2225"  ClearButtonVisibility="WhileEditing" Keyboard="Numeric" IsPassword="True">
+                        </Entry>
+
+                    </Grid>
+
+                    <StackLayout Grid.Row="4" Orientation="Vertical" Spacing="20" VerticalOptions="End">
+                        <Button Text="Registrar" Clicked="btn_registrar_Clicked" x:Name="btn_registrar" 
+                                HeightRequest="55" WidthRequest="145"
+                   Background="#ffd900" CornerRadius="8" TextColor="#1f2225" FontAttributes="Bold" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="5" Orientation="Vertical" Spacing="10" VerticalOptions="End">
+                        <Button Text="Cancelar" Clicked="Button_Clicked" HeightRequest="55" WidthRequest="145"
+                   Background="#e9e9e9" CornerRadius="8" TextColor="#2E4159" FontAttributes="Bold" />
+
+                    </StackLayout>
+
+                    <Grid Grid.Row="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label BackgroundColor="#1f2225" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                        <Label Text="OU"  TextColor="#1f2225" Grid.Column="1" VerticalOptions="Center" Margin="10,0,10,0"/>
+                        <!--<Image Source="user_icon_blue.png" Grid.Column="1" VerticalOptions="Center" Margin="10,0,10,0"/>-->
+                        <Label BackgroundColor="#1f2225" Grid.Column="2" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                    </Grid>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Grid.Row="7">
+                        <Label Text="Lembrar Senha, clique aqui..." TextTransform="Uppercase" TextColor="#1f22251f2225" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CancelCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

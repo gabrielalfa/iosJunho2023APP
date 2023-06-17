@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Etapas_Recentes">
+    
+    
+
+     <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"
+                     Text="Icon Item"
+                     Priority="0" 
+                     IconImageSource="tornfylogo_ios.png"/>
+                    
+        <ToolbarItem Order="Primary"
+                     Text="Filtro"
+                     Priority="1"
+                     Clicked="ToolbarItem_Clicked_1" />
+            </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <SearchBar Margin="10,0,10,0" Placeholder="Buscar Etapa, Circuito ou Clube" x:Name="txt_busca" SearchButtonPressed="txt_busca_SearchButtonPressed" ></SearchBar>
+
+        <ListView x:Name="listagem_torneios"
+                  ItemTapped="listagem_torneios_ItemTapped" 
+              ItemSelected="listagem_torneios_ItemSelected"
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" >
+
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <ViewCell>
+                        <Grid ColumnSpacing="10" Padding="0,10,20,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="7*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout  Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" Orientation="Vertical">
+                                <Label VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold"  FontSize="15"  Text="{Binding data}" />
+                                <Label VerticalOptions="Center" HorizontalOptions="Center"  FontSize="15"  Text="{Binding nome_mes_inicio}" />
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                    <Ellipse Fill="#ff7a25" HorizontalOptions="Center"
+                                            WidthRequest="10" Margin="0,0,-4,0"
+                                            HeightRequest="10"
+                                             />
+                                    <Ellipse Fill="#9ce700" HorizontalOptions="Center"
+                                            WidthRequest="10"
+                                            HeightRequest="10"
+                                             />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <BoxView Grid.Column="1" CornerRadius="2" HeightRequest="70" WidthRequest="70" 
+                                     BackgroundColor="#3c62aa" Opacity="0.9"/>
+
+                            <StackLayout Grid.Column="2" Orientation="Horizontal">
+
+                                <StackLayout Orientation="Vertical">
+
+                                    <!---->
+                                    <Label VerticalOptions="Center" FontAttributes="Bold"  FontSize="14"  Text="{Binding Nome_Etapa}" />
+
+
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+
+                                        <Label VerticalOptions="Center"  FontSize="Small"  TextColor="Black" Text="Limite:" />
+                                        <Label VerticalOptions="Center" FontSize="Small"  Text="{Binding limite}" />
+                                        <!--<Label VerticalOptions="Center"  FontSize="Small" TextColor="Black" Text=" - " />
+                                        <Label VerticalOptions="Center"  FontSize="Small" Text="{Binding Fim}" />-->
+                                    </StackLayout>
+
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                        <Label VerticalOptions="Center"  FontSize="Small"  TextColor="Black"  Text="Inscrição:" />
+                                        <Label VerticalOptions="Center"  FontSize="Small"
+                                               FontAttributes="Italic" Text="{Binding situacao}" />
+                                    </StackLayout>
+
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                       
+                                        <Label VerticalOptions="Center"  FontSize="Small" Text="{Binding nome_grupo, StringFormat='Circuito: {0}'}"  />
+                                    </StackLayout>
+
+
+
+                                </StackLayout>
+
+                            </StackLayout>
+
+
+                            <StackLayout  Grid.Column="3" HorizontalOptions="End" VerticalOptions="Center" Orientation="Horizontal">
+                                <Image HorizontalOptions="End"  Source="{Binding img_path}" WidthRequest="50" Margin="0,0,0,0" />
+                            </StackLayout>
+
+
+                        </Grid>
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!--</Frame>-->
+    </StackLayout>
+</ContentPage>

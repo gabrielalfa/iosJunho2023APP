@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Locacoes">
+    <ContentPage.ToolbarItems>
+        
+         <ToolbarItem Order="Primary"
+                     Text="Histórico"
+                     Priority="1" x:Name="cart_shop"
+                     Clicked="cart_shop_Clicked" />
+         <ToolbarItem Order="Primary"
+                     Text="Pagamento"
+                     Priority="1" x:Name="cart_shop_ball"
+                     Clicked="cart_shop_Clicked" />
+    </ContentPage.ToolbarItems>
+
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+               
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="9*"/>
+
+            </Grid.RowDefinitions>
+
+           
+
+            <CollectionView Grid.Row="0" x:Name="carroucel_days" Margin="20,0,0,0"
+                            SelectionChanged="carroucel_days_SelectionChanged"
+                    SelectionMode="Single" 
+                ItemsLayout="HorizontalList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame HasShadow="False"
+                                     BackgroundColor="{Binding Back_Color}" 
+                                     Margin="0,0,10,0" HeightRequest="40" WidthRequest="40" HorizontalOptions="Center"
+                                     VerticalOptions="CenterAndExpand">
+                                <StackLayout Orientation="Vertical">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10" />
+                                            <RowDefinition Height="30" />
+                                        </Grid.RowDefinitions>
+
+                                        <Label HorizontalOptions="Center" FontSize="18" Margin="0,-10,0,0" TextTransform="Uppercase" 
+                                               FontAttributes="Bold" Text="{Binding string_semana}" TextColor="{Binding Color_Font}">
+                                        </Label>
+
+                                        <Label Grid.Row="1" FontFamily="calibri" HorizontalOptions="Center" FontSize="30"  Margin="0,-5,0,0" TextTransform="Uppercase" 
+                                               FontAttributes="Bold" Text="{Binding dia}" TextColor="{Binding Color_Font}">
+                                        </Label>
+
+                                    </Grid>
+                                </StackLayout>
+
+                                <!---->
+
+
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+            <ScrollView Grid.Row="1">
+
+                <ListView x:Name="carroucel_horarios" 
+                  ItemTapped="carroucel_horarios_ItemTapped" 
+                  ItemSelected="carroucel_horarios_ItemSelected"
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "True" >
+
+                    <ListView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <ViewCell>
+                                <Grid ColumnSpacing="10" Padding="0,10,20,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="5"/>
+                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout  Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" Orientation="Vertical">
+                                        <Label VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold"  FontSize="15"  Text="{Binding horario}" />
+                                        
+                                        <Label VerticalOptions="Center" HorizontalOptions="Center"   FontSize="15"  Text="pago" />
+                                    </StackLayout>
+
+                                    <BoxView Grid.Column="1" CornerRadius="2" HeightRequest="70" WidthRequest="70" 
+                                     BackgroundColor="{Binding bounce_1}" Opacity="0.9"/>
+
+                                    <StackLayout Grid.Column="2" Orientation="Vertical" VerticalOptions="Center">
+
+                                        <StackLayout Orientation="Vertical">
+                                            <!---->
+                                            <Label VerticalOptions="Center" FontAttributes="Bold"  FontSize="14"
+                                                   Text="{Binding nome_locacoes}" />
+
+                                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                                <Label VerticalOptions="Center"  FontSize="Small"  TextColor="Black"
+                                                       Text="{Binding Nome_Quadra}" />
+                                            </StackLayout>  
+
+                                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                                <Label VerticalOptions="Center"  FontSize="Small"  TextColor="Black"  Text="Jogador: " />
+                                                <Label VerticalOptions="Center"  FontSize="Small"  FontAttributes="Italic" Text="{Binding nome_jogador}" />
+                                            </StackLayout>
+
+                                           
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                    <StackLayout  Grid.Column="3" HorizontalOptions="End"
+                                                  VerticalOptions="Center" Orientation="Horizontal">
+                                        <Button Clicked="Button_Clicked" CornerRadius="5"
+                                                HeightRequest="35" Padding="20,0,20,0" BackgroundColor="{Binding color_botao}"
+                                                Text="{Binding texto_locar}" TextColor="Black"/>
+                                    </StackLayout>
+
+
+                                </Grid>
+                            </ViewCell>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+            </ScrollView>
+
+
+
+
+        </Grid>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rg1:PopupPage  xmlns:rg1="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                xmlns:TornfyApp="clr-namespace:TornfyApp" x:DataType="TornfyApp:MaskedBehavior"
+                x:Class="TornfyApp.Mensagem_Simples">
+
+    <Grid HeightRequest="265" VerticalOptions="End">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.RowSpan="2" HeightRequest="465" VerticalOptions="End" CornerRadius="30" Padding="20,0" BackgroundColor="White">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label x:Name="txt_titulo" FontSize="20" FontAttributes="Bold" TextColor="#363636" HorizontalTextAlignment="Center" />
+                    <Label  x:Name="txt_mensagem" TextColor="#363636" FontSize="15"   />
+                </StackLayout>
+            </Grid>
+
+        </Frame>
+
+        <Button Grid.Row="1"  x:Name="btn_close" 
+                TextTransform="Uppercase" TextColor="White"  
+                HeightRequest="45" Clicked="Button_Clicked" />
+    </Grid>
+
+
+</rg1:PopupPage>

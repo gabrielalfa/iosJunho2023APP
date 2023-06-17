@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Informacao_torneio">
+    <ContentPage.Content>
+
+        <ScrollView>
+
+            <StackLayout>
+                <Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <!--<Image Source="http://ctsg.com.br/Content/images/cacaepesca.png" WidthRequest="50" Margin="0,0,10,0" />-->
+                        <StackLayout >
+
+                            <!--<Label VerticalOptions="Center" 
+                               FontSize="Small" TextTransform="Uppercase" TextColor="Black"
+                               Text="Etapa:" />-->
+
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" 
+                               FontSize="Medium" TextColor="Black"
+                               Text="Etapa:" />
+                                <Label VerticalOptions="Center" 
+                               FontSize="Small"
+                               x:Name="txt_NomeEtapa"    />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" 
+                               FontSize="Medium" TextColor="Black"
+                               Text="Clube:" />
+                                <Label VerticalOptions="Center" 
+                               FontSize="Small"
+                               x:Name="txt_NomeClube"    />
+                            </StackLayout>
+
+
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" 
+                               FontSize="Medium" TextColor="Black"
+                               Text="Grupo:" />
+                                <Label VerticalOptions="Center" 
+                               FontSize="Small"
+                                    x:Name="txt_Grupo" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" 
+                               FontSize="Medium" TextColor="Black"
+                               Text="Esq. Pontuação:" />
+                                <Label VerticalOptions="Center" 
+                               FontSize="Small"
+                                    x:Name="txt_esquemaPT" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" 
+                               FontSize="Medium" TextColor="Black"
+                               Text="Data Limite:" />
+                                <Label VerticalOptions="Center" 
+                               FontSize="Small"
+                                    x:Name="txt_datalimite" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" 
+                               FontSize="Medium" TextColor="Black"
+                               Text="Data:"   />
+                                <Label VerticalOptions="Center" 
+                               FontSize="Small"
+                                x:Name="txt_Inicio"/>
+                                <Label VerticalOptions="Center" 
+                               FontSize="Small" TextTransform="Uppercase" TextColor="Black"
+                               Text="-" />
+                                <Label VerticalOptions="Center" 
+                               FontSize="Small"
+                                x:Name="txt_Fim" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" 
+                               FontSize="Medium" TextColor="Black"
+                               Text="Arbitragem" />
+                                <Label VerticalOptions="Center" 
+                               FontSize="Small"
+                               x:Name="txt_Arbitragem"  />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" 
+                               FontSize="Medium" TextColor="Black"
+                               Text="Contato" />
+                                <Label VerticalOptions="Center" 
+                               FontSize="Small"
+                               x:Name="txt_ArbitragemContato" />
+                            </StackLayout>
+
+
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" 
+                               FontSize="Medium" TextColor="Black"
+                               Text="Valores (qtd: 1/2/3) " />
+                                <Label VerticalOptions="Center" 
+                               FontSize="Small"
+                               x:Name="txt_CompilagemValores" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" 
+                               FontSize="Medium" TextColor="Black"
+                               Text="Valores Infantil:" />
+                                <Label VerticalOptions="Center" 
+                               FontSize="Small"
+                               x:Name="txt_ValorInfantil" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical" HorizontalOptions="Center"  Grid.Row="0">
+                                <Image HeightRequest="500" WidthRequest="372" x:Name="image_cartaz" Aspect="Fill" VerticalOptions="Start" Margin="0, 20, 0, 20"/>
+                            </StackLayout>
+
+                        </StackLayout>
+
+
+                    </StackLayout>
+
+                </Frame>
+
+                <ScrollView>
+
+
+                </ScrollView>
+            </StackLayout>
+
+        </ScrollView>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

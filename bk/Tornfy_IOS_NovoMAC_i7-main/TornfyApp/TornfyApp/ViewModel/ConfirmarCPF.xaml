@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:vm11="clr-namespace:TornfyApp.Model" xmlns:xct1="clr-namespace:TornfyApp"
+             x:Class="TornfyApp.ViewModel.ConfirmarCPF"  >
+    <ContentPage.BindingContext>
+        <vm11:ConfirmaCPFViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="#fff">
+
+            <Grid RowDefinitions="Auto">
+                <Image  Source="tornfylogo.png" Margin="0,100,0,0"  HeightRequest="80"  Aspect="AspectFit"/>
+
+            </Grid>
+
+            <ScrollView>
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" HeightRequest="330" Margin="30,30,30,150"
+                      RowSpacing="20" VerticalOptions="End">
+
+                    <Entry  x:Name="txtCPF_1" Placeholder="Digite seu CPF"  HeightRequest="55" WidthRequest="115" PlaceholderColor="#1f2225"
+                    TextColor="#1f2225"  ClearButtonVisibility="WhileEditing" Keyboard="Numeric">
+                        <Entry.Behaviors>
+                            <xct1:MaskedBehavior  Mask="XXX.XXX.XXX-XX"     />
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <StackLayout Grid.Row="1" Orientation="Vertical" Spacing="20" VerticalOptions="End">
+                        <Button Text="Validar CPF"  HeightRequest="55" WidthRequest="145" x:Name="btn_verificaCPF"
+                        Background="#E7305E" Clicked="btn_verificaCPF_Clicked" CornerRadius="8" TextColor="White" FontAttributes="Bold" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2" Orientation="Vertical" Spacing="10" VerticalOptions="End">
+                        <Button Text="Cancelar"  HeightRequest="55" WidthRequest="145"
+                        Background="#e9e9e9" Clicked="Button_Clicked" CornerRadius="8" TextColor="#1f2225" FontAttributes="Bold" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Grid.Row="4" > 
+                        <Label Text="tornfy.com"  TextColor="#1f2225" />
+                    </StackLayout>
+
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

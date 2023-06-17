@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.ListaTorneios" BackgroundColor="#f5f5f5"  >
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem x:Name="no_fav" IconImageSource="favorito.png" Clicked="no_fav_Clicked" Priority="1" Order="Primary" />
+        <ToolbarItem x:Name="fav" IconImageSource="favorito_cheio.png" Clicked="fav_Clicked" Priority="1" Order="Primary" />
+        <ToolbarItem Text="Home" Clicked="ToolbarItem_Clicked_1" Priority="1" Order="Secondary" />
+        <ToolbarItem Text="Meus Dados" Clicked="ToolbarItem_Clicked" Priority="2" Order="Secondary" />
+        <ToolbarItem Text="Minhas Inscrições" Priority="3" Order="Secondary" />
+        <ToolbarItem Text="Pagamentos" Priority="4" Order="Secondary" />
+        <ToolbarItem Text="LogOut" Priority="5" Order="Secondary" />
+    </ContentPage.ToolbarItems>
+
+
+    <StackLayout>
+        <SearchBar Placeholder="Buscar Etapa..." Margin="0,10,20,10" x:Name="txt_busca" SearchButtonPressed="SearchBar_SearchButtonPressed" ></SearchBar>
+
+        <ListView x:Name="listagem_torneios"
+                  ItemTapped="listagem_torneios_ItemTapped" 
+              ItemSelected="Listagem_torneios_ItemSelected"
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "true" >
+
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <ViewCell>
+                        <Grid ColumnSpacing="10" Padding="0,10,20,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="7*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout  Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" Orientation="Vertical">
+                                <Label VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold"  FontSize="15"  Text="{Binding data}" />
+                                <Label VerticalOptions="Center" HorizontalOptions="Center"  FontSize="15"  Text="{Binding nome_mes_inicio}" />
+                            </StackLayout>
+                            <BoxView CornerRadius="20" Grid.Column="1" HeightRequest="70" WidthRequest="70" 
+                                     BackgroundColor="{Binding color}" Opacity="0.9"/>
+                            <StackLayout Grid.Column="2" Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical">
+                                    <Label VerticalOptions="Center" FontAttributes="Bold"  FontSize="Medium"  Text="{Binding Nome_Etapa}" />
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                        <Label VerticalOptions="Center"  FontSize="Small"  TextColor="Black" Text="Data Limite:" />
+                                        <Label VerticalOptions="Center" FontSize="Small"  Text="{Binding limite}" />
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                        <Label VerticalOptions="Center"  FontSize="Small"  TextColor="Black"  Text="Inscrição:" />
+                                        <Label VerticalOptions="Center"  FontSize="Small"   Text="{Binding situacao_inscricao}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout  Grid.Column="3" HorizontalOptions="End" Orientation="Horizontal">
+                                <Image HorizontalOptions="End"  Source="{Binding path_clube}" WidthRequest="50" Margin="0,0,0,0" />
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!--</Frame>-->
+    </StackLayout>
+
+
+</ContentPage>

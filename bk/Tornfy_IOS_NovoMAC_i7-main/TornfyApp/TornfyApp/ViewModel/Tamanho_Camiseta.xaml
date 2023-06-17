@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Tamanho_Camiseta"  Title="Tamanho Camiseta">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Grid Margin="20,30,30,10"  Grid.Row="1">
+                <Frame CornerRadius="20" HasShadow="False" BorderColor="LightGray">
+
+
+
+                    <StackLayout Orientation="Vertical" Padding="10,0,10,20">
+
+                        <StackLayout Orientation="Horizontal" >
+                            <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" FontSize="Small" TextColor="Black" Text="Torneio: " />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" FontSize="Small"  x:Name="txt_nome_etapa" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" >
+                            <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" FontSize="Small" TextColor="Black" Text="Categoria: " />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" FontSize="Small"  x:Name="txt_nome_categoria" />
+                            </StackLayout>
+                        </StackLayout>
+
+
+
+                    </StackLayout>
+
+
+                </Frame>
+            </Grid>
+            <Image Source="camiseta_verde" HeightRequest="30"/>
+
+            <Label
+            Margin="0,0,0,0"
+                FontSize="16"
+            HorizontalOptions="CenterAndExpand"
+            Text="Escolher Tamanha de Camiseta" />
+            <Label
+                FontSize="12"
+            HorizontalOptions="CenterAndExpand"
+            Text="Tamanhos Disponíveis" />
+
+            <StackLayout>
+                <ListView x:Name="lista_camisetas" 
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False"
+                      ItemTapped="lista_camisetas_ItemTapped"
+                      ItemSelected="lista_camisetas_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10" BackgroundColor="{Binding color_inscricao}">
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                            <Image Source="camiseta_verde" Margin="10,10,0,10" HeightRequest="30"/>
+                                            <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                                <Label VerticalOptions="Center"  
+                                                   FontSize="18"
+                                                   Margin="10,10,0,10"
+                                                   Text="{Binding tamanho}" />
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                </Grid>
+                            </ViewCell>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackLayout>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

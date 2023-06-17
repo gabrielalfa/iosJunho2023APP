@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mr="clr-namespace:MR.Gestures;assembly=MR.Gestures"
+             xmlns:xct="http://xamarin.com/schemas/2014/forms" xmlns:mr1="http://xamarin.com/schemas/2014/forms/design"
+             x:Class="TornfyApp.ViewModel.Conteudo" Title="Conteúdo">
+    <ContentPage.Content>
+        <StackLayout>
+            <AbsoluteLayout x:Name="stk_label">
+            <ScrollView >
+                <StackLayout >
+                    <Label Padding="40" x:Name="label_txt"
+                          VerticalOptions="StartAndExpand" FontSize="Medium" 
+                          HorizontalOptions="CenterAndExpand"
+                          />
+
+                    <FlexLayout Direction="Column" x:Name="box_div">
+                        <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray"/>
+                    </FlexLayout>
+
+                    <Label Padding="40,10,0,0" Text="comentários:" x:Name="lbl_coment"
+                          VerticalOptions="StartAndExpand" FontSize="Medium" 
+                          HorizontalOptions="Start" FontAttributes="Italic,Bold"
+                          />
+
+                    <ListView x:Name="commentsListView" HasUnevenRows="true"
+                              ItemTapped="commentsListView_ItemTapped" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                   
+                                        <StackLayout Padding="40, 10, 40, 10">
+                                            <!-- Linha 1 -->
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    
+                                                </Grid.ColumnDefinitions>
+
+                                                <Frame Grid.Column="0"
+                                                   WidthRequest="50"
+                                                   HeightRequest="50"
+                                                   Padding="0"
+                                                   CornerRadius="25"
+                                                   HasShadow="False">
+
+                                                    <Image Source="logo_escuro.jpg"
+                                                       WidthRequest="50"
+                                                       HeightRequest="50"
+                                                       Aspect="AspectFill" />
+
+                                                </Frame>
+
+                                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                                    <Label Text="Nome do Usuário"
+                                                       FontSize="16" Padding="5,0,0,0"
+                                                       FontAttributes="Bold" />
+                                                    <Label FontSize="12" Padding="5,0,0,0"
+                                                       FontAttributes="Italic">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding data}" />
+                                                                <Span Text=" (" />
+                                                                <Span Text="{Binding timeDisplay}" />
+                                                                <Span Text=")" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                </StackLayout>
+
+                                                <Image Grid.Column="2"
+                                                Source="lixo.png"
+                                                Opacity="0.7"
+                                                IsVisible="{Binding self}"
+                                                WidthRequest="24"
+                                                HeightRequest="24"
+                                                VerticalOptions="Center">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+
+
+                                            </Grid>
+                                            <!-- Comentário -->
+                                            <Label Text="{Binding comentario}" FontSize="14" Padding="5,10,0,10" />
+                                            
+                                    </StackLayout>
+                                   
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                       
+
+                    </StackLayout>
+                
+            </ScrollView>
+
+                <!-- Botão suspenso redondo -->
+                <Button x:Name="floatingButton"
+                        Text="+" 
+                        FontSize="24"
+                        BackgroundColor="#1f2225"
+                        TextColor="White"
+                        CornerRadius="30"
+                        WidthRequest="60"
+                        HeightRequest="60"
+                        AbsoluteLayout.LayoutBounds="0.95, 0.98, 60, 60"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        Clicked="floatingButton_Clicked" />
+                
+            </AbsoluteLayout>
+            <AbsoluteLayout HorizontalOptions="FillAndExpand"  x:Name="painel_image"
+                        VerticalOptions="FillAndExpand" Grid.Row="0">
+                <Image x:Name="image_post" BackgroundColor="White"
+                        AbsoluteLayout.LayoutBounds="1,1,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        Aspect="AspectFit" Margin="20">
+                    <Image.GestureRecognizers>
+                        <xct:PinchGestureRecognizer PinchUpdated="PinchGestureRecognizer_PinchUpdated" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+            </AbsoluteLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

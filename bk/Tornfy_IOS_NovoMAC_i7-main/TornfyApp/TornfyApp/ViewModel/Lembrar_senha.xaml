@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm11="clr-namespace:TornfyApp.Model"
+             xmlns:xct="clr-namespace:TornfyApp"
+             x:Class="TornfyApp.ViewModel.Lembrar_senha">
+    <ContentPage.BindingContext>
+        <vm11:ConfirmaCPFViewModel/>
+    </ContentPage.BindingContext>
+
+
+      <ContentPage.Content>
+        <Grid BackgroundColor="#fff">
+            <ScrollView>
+                <Grid RowSpacing="20" VerticalOptions="Center" Padding="30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Row="0" Source="tornfylogo.png" HeightRequest="80" Aspect="AspectFit" />
+
+                   
+
+                    <Entry x:Name="txtCPF" Grid.Row="1" Placeholder="Digite seu CPF" HeightRequest="55" WidthRequest="115" PlaceholderColor="#1f2225"
+                        TextColor="#1f2225" ClearButtonVisibility="WhileEditing" Keyboard="Numeric">
+                        <Entry.Behaviors>
+                            <xct:MaskedBehavior Mask="XXX.XXX.XXX-XX"  />
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Button Grid.Row="2" Text="Enviar Lembrete" HeightRequest="55" WidthRequest="145"
+                        Background="#ffd900" Clicked="Button_Clicked_2" CornerRadius="8" TextColor="#1f2225" FontAttributes="Bold" />
+
+                    <Button Grid.Row="3" Text="Cancelar" HeightRequest="55" WidthRequest="145"
+                        Background="#e9e9e9" Clicked="Button_Clicked" CornerRadius="8" TextColor="#2E4159" FontAttributes="Bold" />
+
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label BackgroundColor="#1f2225" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                        <Label Text="OU"  TextColor="#1f2225" Grid.Column="1" VerticalOptions="Center" Margin="10,0,10,0"/>
+                        <Label BackgroundColor="#1f2225" Grid.Column="2" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                    </Grid>
+
+                    <StackLayout Grid.Row="5" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Lembrei minha senha, voltar ao login" TextTransform="Uppercase" TextColor="#1f2225" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding voltarlogin_command}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

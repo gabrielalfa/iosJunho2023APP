@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Escolher_Parceiro"  Title="Escolher Parceiro">
+    <ContentPage.Content>
+        <StackLayout>
+
+
+            <Grid Margin="20,30,30,10" RowSpacing="150" >
+                <Frame CornerRadius="20">
+
+                    <StackLayout Orientation="Vertical" Padding="10,10,10,6">
+
+                        <StackLayout Orientation="Horizontal" >
+
+                            <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" FontSize="Small" TextColor="Black" Text="Torneio: " />
+
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" FontSize="Small"  x:Name="txt_nome_etapa" />
+                            </StackLayout>
+
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" >
+                            <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" FontSize="Small" TextColor="Black" Text="Categoria: " />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                <Label VerticalOptions="Center" FontSize="Small"  x:Name="txt_nome_categoria" />
+                            </StackLayout>
+                        </StackLayout>
+
+
+
+
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
+            <SearchBar x:Name="txtSearch" 
+                       SearchButtonPressed="txtSearch_SearchButtonPressed"
+                       Placeholder="Buscar Nome/ID ou Email"
+                       Margin="30,0,30,0"></SearchBar>
+
+            <Label
+            Margin="0,20,0,0"
+                FontSize="16" FontAttributes="Bold,Italic"
+            HorizontalOptions="CenterAndExpand"
+            Text="Selecione um parceiro para Dupla" />
+            <Label
+                FontSize="12"
+            HorizontalOptions="CenterAndExpand"
+            Text="Nome Jogador (Nome/ID)" />
+
+            <ListView x:Name="lista_categorias" 
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "false"
+                      ItemTapped="lista_categorias_ItemTapped"
+                      ItemSelected="lista_categorias_ItemSelected"
+                      IsGroupingEnabled="True" GroupDisplayBinding="{Binding Key}"   >
+
+
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <ViewCell>
+                            <Grid Padding="10" BackgroundColor="{Binding color_inscricao}">
+
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+
+                                        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                            <Label VerticalOptions="Center"  
+                                                   FontSize="18"
+                                                   Margin="10,10,0,10"
+                                                   Text="{Binding Nome_Jogador}" />
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                    <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand" 
+                                                 Orientation="Horizontal">
+                                        <Label VerticalOptions="Center" Margin="0" FontAttributes="Bold" FontSize="Small" Text="ID:" />
+                                        <Label VerticalOptions="Center" Margin="0,0,15,0" FontSize="Small" Text="{Binding id_Jogador}" />
+
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                            </Grid>
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

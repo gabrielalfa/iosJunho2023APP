@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Complexos" Title="Complexos de Quadra">
+   
+
+    <StackLayout>
+
+        <StackLayout>
+
+            <Label Text="Locais Habilitados" HorizontalTextAlignment="Center"  FontSize="16" Padding="30,20,30,0"/>
+            <Label Text="tornfy.com" HorizontalTextAlignment="Center"  FontSize="16" Padding="30,0,30,0"/>
+            <FlexLayout Direction="Column">
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray" Margin="30,0,30,0"/>
+            </FlexLayout>
+
+            <ListView x:Name="listagem_torneios" 
+                  HasUnevenRows="True"
+                       ItemTapped="listagem_torneios_ItemTapped"
+                  ItemSelected="listagem_torneios_ItemSelected"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" Margin="10"
+               IsPullToRefreshEnabled = "False" 
+                     >
+                <ListView.ItemTemplate>
+                    <DataTemplate>  
+                        <ViewCell>
+                            <Grid ColumnSpacing="10" Padding="15,10,15,10" >
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.2*" />
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="4*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="80" />
+                                </Grid.RowDefinitions>
+
+
+                                <Image VerticalOptions="Center"  Source="{Binding path}" HeightRequest="40"  />
+                                <BoxView Grid.Column="1" CornerRadius="2" HeightRequest="70" WidthRequest="70" 
+                                     BackgroundColor="#3c62aa" Opacity="0.9"/>
+                                <Grid VerticalOptions="Center" Padding="10,0,0,0" Grid.Column="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8*" />
+                                    </Grid.ColumnDefinitions>   
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label   VerticalOptions="Center" 
+                                                 FontSize="16" FontAttributes="Bold"  TextColor="{Binding color_font}"
+                                                 Text="{Binding nome_locacoes, StringFormat='{0}'}" />
+
+                                    <Label Grid.Row="1" VerticalOptions="Center" 
+                                                 FontSize="14" TextColor="{Binding color}"
+                                                 Text="local de locação" />
+                                </Grid>
+
+
+                                <StackLayout VerticalOptions="Center" 
+                                                 Grid.Column="3" HorizontalOptions="EndAndExpand"  
+                                                 Orientation="Vertical">
+                                     <Frame 
+                                          VerticalOptions="Center" 
+                                          HorizontalOptions="Center" 
+                                          Padding="5,10,5,10" 
+                                          CornerRadius="8"
+                                          HasShadow="False"
+                                          BackgroundColor="#ffd900">
+                                        
+
+                                        <Label FontFamily="calibri" 
+                                            FontSize="16"
+                                               Padding="6,0,6,0"
+                                            FontAttributes="Bold" 
+                                            Text="locar quadra" 
+                                            TextColor="#000" />
+                                    </Frame>
+                                </StackLayout>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Botão fixo -->
+        <Button x:Name="btn_naoValores" 
+                Text="Solicitar Acesso"
+                BorderColor="#3c62aa"
+                BorderWidth="1"
+                HeightRequest="55"
+                WidthRequest="145"
+                Background="#3c62aa"
+                Clicked="btn_naoValores_Clicked"
+                FontSize="18"
+                Margin="20,0,20,40"
+                CornerRadius="8"
+                TextColor="White"
+                FontAttributes="Bold" />
+
+
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

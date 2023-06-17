@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rg1:PopupPage  xmlns:rg1="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                xmlns:TornfyApp="clr-namespace:TornfyApp" x:DataType="TornfyApp:MaskedBehavior"
+                x:Class="TornfyApp.FiltroEtapas">
+
+    <Grid HeightRequest="765" VerticalOptions="End">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.RowSpan="2" HeightRequest="465" VerticalOptions="End" CornerRadius="30" Padding="20,0" BackgroundColor="White">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            
+                <StackLayout Margin="10">
+                    <Label Text="Filtar período de datas"
+               Style="{DynamicResource TitleStyle}"
+               Margin="0, 20"
+               HorizontalTextAlignment="Center" />
+
+                    <Label Text="Data Inicial:" />
+
+                    <DatePicker x:Name="startDatePicker"
+                    Format="D"
+                    Margin="30, 0, 0, 30"
+                    DateSelected="OnDateSelected" />
+
+                    <Label Text="Data Final:" />
+
+                    <DatePicker x:Name="endDatePicker"
+                    MinimumDate="{Binding Source={x:Reference startDatePicker},
+                                          Path=Date}"
+                    Format="D"
+                    Margin="30, 0, 0, 30"
+                    DateSelected="OnDateSelected" />
+
+                    <StackLayout Orientation="Horizontal"
+                     Margin="0, 0, 0, 30">
+                        <Label Text="Apenas etapas abertas "
+                   VerticalOptions="Center" />
+                        <Switch x:Name="includeSwitch"
+                    Toggled="OnSwitchToggled" />
+                    </StackLayout>
+
+                    <Label x:Name="resultLabel"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Center" />
+
+                </StackLayout>
+            </Grid>
+            
+        </Frame>
+
+        <Button Grid.Row="1" Text="Filtrar Etapas" x:Name="btn_close" 
+                TextTransform="Uppercase" TextColor="White"  
+                HeightRequest="45" Background="#3c62aa" Clicked="Button_Clicked" />
+    </Grid>
+
+
+</rg1:PopupPage>

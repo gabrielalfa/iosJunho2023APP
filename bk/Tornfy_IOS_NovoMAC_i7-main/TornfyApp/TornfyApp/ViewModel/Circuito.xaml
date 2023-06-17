@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TornfyApp.ViewModel.Circuito" Padding="0,0,0,0" >
+
+    <!--<ContentPage.ToolbarItems>
+
+        <ToolbarItem IconImageSource="menu_ranking.png"  Clicked="ToolbarItem_Clicked" Priority="0" Order="Primary"  />
+        <ToolbarItem x:Name="no_fav" IconImageSource="favorito_preto.png" Clicked="no_fav_Clicked" Priority="1" Order="Primary" />
+        <ToolbarItem x:Name="fav" IconImageSource="favorito_preto_cheio.png" Clicked="fav_Clicked" Priority="1" Order="Primary" />
+
+        <ToolbarItem Text="pontuação" Clicked="ToolbarItem_Clicked" Priority="1" Order="Primary" />
+    </ContentPage.ToolbarItems>-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"
+                     Text="Icon Item"
+                     Priority="0" 
+                     IconImageSource="tornfylogo_ios.png"/>
+
+
+        <ToolbarItem Order="Primary" x:Name="no_fav"
+                     Text="Fav"
+                     Priority="1"
+                     Clicked="no_fav_Clicked" />
+        <ToolbarItem Order="Primary" x:Name="fav"
+                     Text="Desfav."
+                     Priority="1"
+                     Clicked="fav_Clicked" />
+        
+    </ContentPage.ToolbarItems>
+
+
+
+   
+
+
+        <Grid Margin="0,0,0,0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="160"/>
+               <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0">
+              
+
+      <Grid Margin="0,0,0,0" BackgroundColor="#F0F0F0" Padding="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+        <Frame CornerRadius="8" HasShadow="False" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start"
+               Padding="5" IsClippedToBounds="True" Margin="0,0,0,10">
+            <Image x:Name="img_path" Source="user_round" Aspect="AspectFit" />
+        </Frame>
+        <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand" Margin="10,0,0,0" Orientation="Vertical">
+            <Label x:Name="nome_jogador" Text="Circuito Tênis da Serra Gaúcha" HorizontalOptions="Start" VerticalTextAlignment="Center" FontSize="18" TextColor="#1f2225" />
+            <Label x:Name="email_jogador" Text="Esquema de Pontos CTSG Serra" HorizontalOptions="Start" VerticalTextAlignment="Center" FontSize="13" TextColor="#1f2225" />
+        </StackLayout>
+    </Grid>
+
+
+            <Picker Grid.Row="1"
+                SelectedIndexChanged="pcAnos_SelectedIndexChanged"
+                x:Name="pcAnos"  Margin="20,0,20,20" 
+                HorizontalOptions="FillAndExpand" 
+                HeightRequest="50" 
+                HorizontalTextAlignment="Center" >
+            </Picker>
+
+            </StackLayout>
+            
+
+            <ListView x:Name="listagem_torneios" Grid.Row="2"
+                  ItemTapped="listagem_torneios_ItemTapped" 
+              ItemSelected="listagem_torneios_ItemSelected"
+                  HasUnevenRows="True"
+              SeparatorVisibility="Default"
+              BackgroundColor="Transparent" 
+               IsPullToRefreshEnabled = "False" >
+
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <ViewCell>
+                            <Grid ColumnSpacing="10" Padding="0,10,20,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="7*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout  Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" Orientation="Vertical">
+                                    <Label VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold"  FontSize="15"  Text="{Binding data}" />
+                                    <Label VerticalOptions="Center" HorizontalOptions="Center"  FontSize="15"  Text="{Binding nome_mes_inicio}" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Ellipse Fill="#ff7a25" HorizontalOptions="Center"
+                                            WidthRequest="10" Margin="0,0,-4,0"
+                                            HeightRequest="10"
+                                             />
+                                        <Ellipse Fill="#9ce700" HorizontalOptions="Center"
+                                            WidthRequest="10"
+                                            HeightRequest="10"
+                                             />
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <BoxView Grid.Column="1" CornerRadius="2" HeightRequest="70" WidthRequest="70" 
+                                     BackgroundColor="#3c62aa" Opacity="0.9"/>
+
+                                <StackLayout Grid.Column="2" Orientation="Horizontal">
+
+                                    <StackLayout Orientation="Vertical">
+
+                                        <!---->
+                                        <Label VerticalOptions="Center" FontAttributes="Bold"  FontSize="14"  Text="{Binding Nome_Etapa}" />
+
+
+                                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+
+                                            <Label VerticalOptions="Center"  FontSize="Small"  TextColor="Black" Text="Limite:" />
+                                            <Label VerticalOptions="Center" FontSize="Small"  Text="{Binding limite}" />
+                                            <!--<Label VerticalOptions="Center"  FontSize="Small" TextColor="Black" Text=" - " />
+                                        <Label VerticalOptions="Center"  FontSize="Small" Text="{Binding Fim}" />-->
+                                        </StackLayout>
+
+                                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                            <Label VerticalOptions="Center"  FontSize="Small"  TextColor="Black"  Text="Inscrição:" />
+                                            <Label VerticalOptions="Center"  FontSize="Small"  FontAttributes="Italic" Text="{Binding situacao}" />
+                                        </StackLayout>
+
+                                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                            <Label VerticalOptions="Center"  FontSize="Small"  TextColor="Black"  Text="Circuito:" />
+                                            <Label VerticalOptions="Center"  FontSize="Small"  Text="{Binding nome_grupo}" />
+                                        </StackLayout>
+
+
+
+                                    </StackLayout>
+
+                                </StackLayout>
+
+
+                                <StackLayout  Grid.Column="3" HorizontalOptions="End" VerticalOptions="Center" Orientation="Horizontal">
+                                    <Image HorizontalOptions="End"  Source="{Binding img_path}" WidthRequest="50" Margin="0,0,0,0" />
+                                </StackLayout>
+
+
+                            </Grid>
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </Grid>
+
+
+</ContentPage>
